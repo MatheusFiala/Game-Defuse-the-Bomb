@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title> Fase3 Retaguarda </title>
+
+    <!-- CSS Da Página -->
+    <!---------------------------------->
+    <style>
+
+      button {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin-left: 45%;
+        background: rgba(109, 106, 106, 0.137);
+        height: 10%;
+        width: 10%;
+        font-weight: bold;
+        padding: 6px 10px;
+        border-radius: 15px;
+      }
+     
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        overflow-y: auto;
+      }
+      
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size:xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+      }
+      
+      form {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        max-height: 70vh;
+        overflow: auto;
+        backdrop-filter: blur(2px);
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 30px;
+        flex-wrap: wrap;
+        gap: 50px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      #café {
+        margin-bottom: auto;
+        position: absolute;
+      }
+  
+      .imagens {
+        width: 240px;
+        cursor: pointer;
+      }
+  
+      @media only screen and (max-width: 700px) {
+        .imagens {
+          width: 240px;
+        }
+      }
+  
+      input[type="radio"] {
+        appearance: none;
+        width: 170px;
+        height: 210px;
+        border-radius: 12px;
+        position: absolute;
+        z-index: -1;
+        background: transparent;
+      }
+  
+      input[type="radio"]:checked {
+        background: #00800099;
+      }
+  
+      #meuForm img {
+        width: 310px;
+      }
+
+      #Opcao1 {
+        width: 250px;
+        height: 130px;
+        margin-left: 30px;
+        margin-top: -10px;
+      }
+
+      #Opcao2 {
+        width: 330px;
+        height: 230px;
+        margin-top: -10px;
+        margin-left: -10px;
+      }
+
+      #Opcao3 {
+        width: 300px;
+        height: 230px;
+      }
+
+      #Opcao4 {
+        height: 290px;
+        width: 210px;
+        margin-left: 48px;
+      }
+
+      #Opcao5 {
+        width: 350px;
+        height: 170px;
+       margin-left: -20px;
+        margin-top: -10px;
+      }
+
+      </style>
+
+  </head>
+  <body>
+    <!------------------------------------------------------->
+    <!--JavaScript-->
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+      console.log(document.cookie.match('usuario').input);
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+
+      var socket = io();
+
+      function EnviarEscolha() {
+    
+        var escolhaUsuario;
+        if (document.getElementById("Opcao1").checked) {
+          escolhaUsuario = "1";} 
+
+        else if (document.getElementById("Opcao2").checked) {
+            escolhaUsuario = "2"; }
+
+        else if (document.getElementById("Opcao3").checked) {
+            escolhaUsuario = "3"; }
+
+        else if (document.getElementById("Opcao4").checked) {
+            escolhaUsuario = "4"; }
+
+        else if (document.getElementById("Opcao5").checked) {
+            escolhaUsuario = "5"; }
+        
+            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      };
+
+      
+      socket.on('escolhaNum', (escolhacorreta) => {
+   console.log(escolhacorreta);
+  
+   if (escolhacorreta == "1") {
+    window.location.href = 'Bomba1-retaguarda.html?' + (document.cookie.match('usuario').input);
+
+   } else if (escolhacorreta == "2") {
+    window.location.href = 'Bomba2-retaguarda.html?' + (document.cookie.match('usuario').input);
+
+   } else if (escolhacorreta == "3") {
+    window.location.href = 'Bomba3-retaguarda.html?' + (document.cookie.match('usuario').input);
+
+   } else if (escolhacorreta == "4") {
+    window.location.href = 'Bomba4-retaguarda.html?' + (document.cookie.match('usuario').input);
+    
+    } else if (escolhacorreta == "5") {
+    window.location.href = 'Bomba5-retaguarda.html?' + (document.cookie.match('usuario').input);
+    
+   } else {
+    window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+    }
+});
+
+
+
+    </script>
+
+
+     <!-- Código Html -->
+     <!--------------------------------->
+    <h1> Use a descrição de seu agente de campo para descobrir qual a bomba que está com ele.
+    </h1>
+    <br>
+    <form id="meuForm">
+
+        <label>
+        <input type="radio" value="1" id="Opcao1" class="café" name="carros"> 
+        <img src= "https://i.ibb.co/N1gP36H/Bomba1.png" >
+        </label>
+        
+        <label>
+        <input type="radio" value="2" id="Opcao2" class="café" name="carros"> 
+        <img src= "https://i.ibb.co/3FCqgYP/Bomba2.png" >
+        </label>
+        
+        <label>
+        <input type="radio" value="3" id="Opcao3" class="café" name="carros"> 
+        <img src="https://i.ibb.co/CJcPjH0/Bomba3.png" >
+        </label>
+        
+        <label>
+        <input type="radio" value="4" id="Opcao4" class="café" name="carros"> 
+        <img src="https://i.ibb.co/3BCfpW2/Bomba4.png" >
+        </label>
+        
+        <label>
+        <input type="radio" value="5" id="Opcao5" class="café" name="carros"> 
+        <img src="https://i.ibb.co/hF56dHY/Bomba5.png" >
+        </label>
+
+    </form>
+
+    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
+
+  </body>
+
+</html>

@@ -1,0 +1,40 @@
+body {
+    background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+    background-repeat: no-repeat;
+    background-size: 100vw 100vh;
+    overflow-y: auto;
+}
+h1{
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+    font-family: cursive;
+    margin-top: 80px;
+    text-shadow: 0px 0px 15px black;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+    backdrop-filter: blur(2px);
+}
+button {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    align-items: center;
+    margin-top: 5%;
+    margin-left: 30%;
+    width: 100px;
+    height: 100px;
+    background: rgba(109, 106, 106, 0.137);
+    align-items: center;
+    border-radius: 30%;
+    cursor: pointer;
+    transition-duration: 300ms;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+#escolherUsuario {
+    margin-left: 25%;
+    justify-content: center;
+}

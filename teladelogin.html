@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Desarmar Bomba</title>
+
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+</head>
+<body>
+  <h1>Digite sua matrícula P para criar a sala, seu parceiro ira precisar utilizar a sua matricula para ingressar em sua sala.</h1>
+
+  <input type="text" id="escolherUsuario" placeholder="Digite sua matricula P">
+
+  <button onclick="criarSala()">Criar Sala</button>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }   
+
+    const socket = io();
+    const params = new URLSearchParams(window.location.search);
+    const usuario = params.get('usuario');
+
+    socket.emit('criarSala', usuario);
+
+    function criarSala() {
+      const escolherUsuarioInput = document.getElementById('escolherUsuario');
+      const usuarioEscolhido = escolherUsuarioInput.value;
+        
+      document.cookie = 'usuario='+usuarioEscolhido+'; path=/'
+      window.location.href = `/telainicial.html?usuario=${usuarioEscolhido}`;
+    }
+
+    io.emit('criarSala', usuarioEscolhido);
+  </script>
+</body>
+</html>

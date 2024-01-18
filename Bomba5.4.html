@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title> Bomba 5 </title>
+
+    <!-- CSS Da Página -->
+    <!---------------------------------->
+    <style>
+
+      button {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin-left: 45%;
+        margin-top: 5%;
+        background: rgba(109, 106, 106, 0.137);
+        height: 10%;
+        width: 10%;
+        font-weight: bold;
+        padding: 6px 10px;
+        border-radius: 15px;
+      }
+     
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw 130vh;
+        overflow-y: auto;
+      }
+      
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size:xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+      }
+      
+      form {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        max-height: 70vh;
+        backdrop-filter: blur(2px);
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 0px;
+        flex-wrap: nowrap;
+        gap: 80px;
+        align-content: flex-start;
+        justify-content: center;
+        align-items:flex-start;
+      }
+  
+      #café {
+        margin-bottom: auto;
+        position: absolute;
+      }
+  
+      .imagens {
+        width: 240px;
+        cursor: pointer;
+      }
+  
+      @media only screen and (max-width: 700px) {
+        .imagens {
+          width: 240px;
+        }
+      }
+  
+      input[type="radio"] {
+        appearance: none;
+        width: 160px;
+        height: 180px;
+        margin-left: -142px;
+        margin-top: -10px;
+        border-radius: 12px;
+        position: absolute;
+        z-index: -1;
+        background: transparent;
+      }
+  
+      input[type="radio"]:checked {
+        background: #00800099;
+      }
+  
+      #meuForm img {
+        width: 130px;
+      }
+
+      #Opcao1 {
+        width: 190px;
+        height: 470px;
+        margin-left: -31px;
+        margin-top: -60px;
+      }
+
+      #Opcao2 {
+        width: 170px;
+        height: 320px;
+        margin-left: -20px;
+        margin-top: -60px;
+      }
+
+      #Opcao3 {
+        width: 190px;
+        height: 460px;
+        margin-left: -30px;
+        margin-top: -60px;
+      }
+
+      #Opcao4 {
+        width: 190px;
+        height: 470px;
+        margin-left: -30px;
+        margin-top: -59px;
+      }
+
+      #Opcao5 {
+        width: 205px;
+        height: 473px;
+        margin-left: -40px;
+        margin-top: -56px;
+      }
+
+      #circuito {
+        width: 18%;
+        margin-left: 40%;
+      }
+
+      </style>
+
+  </head>
+  <body>
+    <!------------------------------------------------------->
+    <!--JavaScript-->
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+      console.log(document.cookie.match('usuario').input);
+
+      var socket = io();
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+
+      function EnviarEscolha() {
+    
+        var escolhaUsuario;
+        if (document.getElementById("Opcao1").checked) {
+          escolhaUsuario = "1";} 
+
+        else if (document.getElementById("Opcao2").checked) {
+            escolhaUsuario = "2"; }
+
+        else if (document.getElementById("Opcao3").checked) {
+            escolhaUsuario = "3"; }
+
+        else if (document.getElementById("Opcao4").checked) {
+            escolhaUsuario = "4"; }
+
+        else if (document.getElementById("Opcao5").checked) {
+            escolhaUsuario = "5"; }
+        
+            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+
+      };
+
+      
+      socket.on('vitoria', (escolhacorreta) => {
+          console.log(escolhacorreta);
+          
+          if (escolhacorreta) {
+              window.location.href = 'voceganhou.html?' + (document.cookie.match('usuario').input);
+            }
+          else {
+              window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+            }
+          }
+        );
+
+    </script>
+
+
+     <!-- Código Html -->
+     <!--------------------------------->
+    <h1> Siga as instruções do seu agente de retaguarda para desarmar a bomba.
+    </h1>
+    <img src= "https://i.ibb.co/YR7BRMH/Circuito.png"  id="circuito" >
+
+    <form id="meuForm">
+
+        <label> Cortar o Fio azul a esquerda, Fio azul a direita e o Fio preto a direita. <br>
+        <input type="radio" value="1" id="Opcao1" class="café" name="carros"> 
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
+        </label>
+        
+        <label> Cortar o Fio vermelho a direita e depois o Fio azul a direita. <br>
+        <input type="radio" value="2" id="Opcao2" class="café" name="carros"> 
+        <img src = "https://i.ibb.co/SN73CDq/Fio2.png">
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        </label>
+        
+        <label> Cortar Fio vermelho a direita , Fio azul a direita e Fio preto a direita. <br>
+        <input type="radio" value="3" id="Opcao3" class="café" name="carros"> 
+        <img src = "https://i.ibb.co/SN73CDq/Fio2.png">
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
+        </label>
+        
+        <label> Cortar Fio vermelho a esquerda , Fio azul a direita e Fio preto a direita. <br>
+        <input type="radio" value="4" id="Opcao4" class="café" name="carros"> 
+        <img src = "https://i.ibb.co/SN73CDq/Fio2.png">
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
+        </label>
+        
+        <label> Cortar Fio vermelho a direita , Fio azul a esquerda e Fio preto a direita. <br>
+        <input type="radio" value="5" id="Opcao5" class="café" name="carros"> 
+        <img src = "https://i.ibb.co/SN73CDq/Fio2.png">
+        <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
+        <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
+        </label>
+
+    </form>
+
+    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
+
+  </body>
+
+</html>

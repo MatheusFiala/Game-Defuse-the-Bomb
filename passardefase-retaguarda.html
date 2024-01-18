@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title> Passar de Fase </title>
+
+    <!-- CSS -->
+    <!---------------------------------->
+    <style>
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        overflow-y: auto;
+      }
+
+      img#imagem {
+        height: 35%;
+        width: 35%;
+        margin-top: 3%;
+        margin-left: 30%;
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+      }
+    </style>
+
+    <!-- JavaScript -->
+    <!---------------------------------->
+    <script>
+      const imagens = {
+        1: "https://i.ibb.co/44gq5Qk/Avi-o1.png",
+        2: "https://i.ibb.co/k47pn1c/Moto-2-removebg-preview.png",
+        3: "https://i.ibb.co/n0GYY25/Helic-ptero-3.png",
+        4: "https://i.ibb.co/Zh6Bq3K/Aplicativo-1.png4",
+        5: "https://i.ibb.co/sPSNpcB/Barco-5.png5"
+      };
+    
+      function gerarimagens() {
+        const valores = Object.keys(imagens);
+        const indicealeatorio = Math.floor(Math.random() * valores.length);
+        const valorEscolhido = valores[indicealeatorio];
+        const imagemselecionada = imagens[valorEscolhido];
+    
+        const imagemElement = document.getElementById('imagem');
+        imagemElement.src = imagemselecionada;
+    
+        enviarValor();
+      }
+    
+      function enviarValor() {
+
+        function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        console.log(document.cookie.match('usuario').input);
+
+        const imagemElement = document.getElementById('imagem');
+        const valorEscolhido = obterValorDaImagem(imagemElement.src);
+    
+        socket.emit("valorEscolhido", {'valorEscolhido':valorEscolhido,"usuario":getCookie('usuario'), 'agente':'retaguarda'});
+
+      }
+    
+      function obterValorDaImagem(src) {
+        const partesDaURL = src.split('/');
+        const nomeDaImagem = partesDaURL[partesDaURL.length - 1];
+        const valor = nomeDaImagem.replace(/\D/g, '');
+    
+        return valor;
+      }
+    
+      window.onload = function () {
+        gerarimagens();
+      };
+    </script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      const socket = io();
+      
+      console.log(document.cookie.match('usuario').input);
+
+    </script>
+
+    <script>
+
+      socket.on('vitoria', (escolhacorreta) => {
+          console.log(escolhacorreta);
+          
+          if (escolhacorreta) {
+              window.location.href = 'Fase2-retaguarda.html?' + (document.cookie.match('usuario').input);
+            }
+          else {
+              window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+            }
+          }
+        );
+
+  </script>
+
+  </head>
+
+  <body>
+    <!-- Código HTML -->
+    <!---------------------------------->
+    <h1> Infelizmente o veículo do seu agente de campo estragou, 
+      e agora ele precisa saber qual o meio de transporte mais rápido para chegar ao local da Bomba. </h1>
+    <br>
+    <img id="imagem">
+  </body>
+  
+</html>

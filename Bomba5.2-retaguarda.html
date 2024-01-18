@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title> Bomba 5 </title>
+
+    <!-- CSS -->
+    <!---------------------------------->
+    <style>
+      
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        overflow-y: auto;
+      }
+
+      img#imagem {
+        height: 24%;
+        width: 24%;
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+      }
+
+    </style>
+
+    <!-- JavaScript -->
+    <!---------------------------------->
+    <script>
+      const imagens = {
+        1: "https://i.ibb.co/hF56dHY/Bomba5.png",
+      };
+    
+      function gerarimagens() {
+        const valores = Object.keys(imagens);
+        const indicealeatorio = Math.floor(Math.random() * valores.length);
+        const valorEscolhido = valores[indicealeatorio];
+        const imagemselecionada = imagens[valorEscolhido];
+    
+        const imagemElement = document.getElementById('imagem');
+        imagemElement.src = imagemselecionada;
+    
+        enviarValor();
+      }
+    
+      function enviarValor() {
+
+        function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        console.log(document.cookie.match('usuario').input);
+
+        const imagemElement = document.getElementById('imagem');
+        const valorEscolhido = obterValorDaImagem(imagemElement.src);
+    
+        socket.emit("valorEscolhido", {'valorEscolhido':valorEscolhido,"usuario":getCookie('usuario'), 'agente':'retaguarda'});
+
+      }
+    
+      function obterValorDaImagem(src) {
+        const partesDaURL = src.split('/');
+        const nomeDaImagem = partesDaURL[partesDaURL.length - 1];
+        const valor = nomeDaImagem.replace(/\D/g, '');
+    
+        return valor;
+      }
+    
+      window.onload = function () {
+        gerarimagens();
+      };
+    </script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      const socket = io();
+
+      console.log(document.cookie.match('usuario').input);
+
+    </script>
+
+    <script>
+
+      socket.on('vitoria', (escolhacorreta) => {
+          console.log(escolhacorreta);
+          
+          if (escolhacorreta) {
+              window.location.href = 'bomba5.3-retaguarda.html?' + (document.cookie.match('usuario').input);
+            }
+          else {
+              window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+            }
+          }
+        );
+
+  </script>
+
+  </head>
+
+  <body>
+    <!-- Código HTML -->
+    <!---------------------------------->
+    <h1> Seu agente de campo acessou o circuito interno da bomba, Continue auxiliando ele.<br>
+      <br>
+       Corte os fios do circuito na seguinte sequência: fio vermelho a esquerda
+       e fio azul a direita. <br>
+       <br>
+       <img src = "https://i.ibb.co/SN73CDq/Fio2.png" height="15%" width="15%">
+       <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" height="15%" width="15%">
+       <br>
+       <img src = "https://i.ibb.co/YR7BRMH/Circuito.png" width="25%" height="25%">
+       <img id="imagem" hidden>
+    </h1>
+    
+    <br>
+  </body>
+  
+</html>

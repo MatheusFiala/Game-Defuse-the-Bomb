@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title> Fase 2.4 </title>
+
+    <!-- CSS Da Página -->
+    <!---------------------------------->
+    <style>
+
+      button {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin-left: 45%;
+        background: rgba(109, 106, 106, 0.137);
+        height: 10%;
+        width: 10%;
+        font-weight: bold;
+        padding: 6px 10px;
+        border-radius: 15px;
+      }
+     
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+        overflow-y: auto;
+      }
+      
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size:xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+      }
+      
+      form {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        max-height: 70vh;
+        overflow: auto;
+        backdrop-filter: blur(3px);
+        margin: auto;
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding: 30px;
+        flex-wrap: wrap;
+        gap: 50px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      #café {
+        margin-bottom: auto;
+        position: absolute;
+      }
+  
+      .imagens {
+        width: 240px;
+        cursor: pointer;
+      }
+  
+      @media only screen and (max-width: 700px) {
+        .imagens {
+          width: 240px;
+        }
+      }
+  
+      input[type="radio"] {
+        appearance: none;
+        width: 390px;
+        margin-top: -20px;
+        margin-left: -20px;
+        height: 240px;
+        border-radius: 12px;
+        position: absolute;
+        z-index: -1;
+        background: transparent;
+      }
+  
+      input[type="radio"]:checked {
+        background: #00800099;
+      }
+  
+      #meuForm img {
+        width: 350px;
+      }
+      </style>
+
+  </head>
+  <body>
+    <!------------------------------------------------------->
+    <!--JavaScript-->
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+      console.log(document.cookie.match('usuario').input);
+
+      function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
+
+      var socket = io();
+
+      function EnviarEscolha() {
+    
+        var escolhaUsuario;
+        if (document.getElementById("Opcao1").checked) {
+          escolhaUsuario = "43";} 
+
+        else if (document.getElementById("Opcao2").checked) {
+            escolhaUsuario = "44"; }
+
+        else if (document.getElementById("Opcao3").checked) {
+            escolhaUsuario = "42"; }
+
+        else if (document.getElementById("Opcao4").checked) {
+            escolhaUsuario = "50"; }
+
+        else if (document.getElementById("Opcao5").checked) {
+            escolhaUsuario = "19"; }
+        
+            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      };
+
+      
+      socket.on('vitoria', (escolhacorreta) => {
+          console.log(escolhacorreta);
+          
+          if (escolhacorreta) {
+              window.location.href = 'passardefase2.html?' + (document.cookie.match('usuario').input);
+            }
+          else {
+              window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+            }
+          }
+        );
+
+    </script>
+
+
+     <!-- Código Html -->
+     <!--------------------------------->
+    <h1> Você encontrou o prédio correto e agora precisa descobrir em qual sala do prédio a bomba está localizada, você precisa ser rápido,
+      seu tempo está quase acabando.
+    </h1>
+    <br>
+    <form id="meuForm">
+
+        <label>
+        <input type="radio" value="43" id="Opcao1" class="café" name="carros"> 
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-43.jpg">
+        </label>
+        
+        <label>
+        <input type="radio" value="44" id="Opcao2" class="café" name="carros"> 
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-44.jpg" >
+        </label>
+        
+        <label>
+        <input type="radio" value="42" id="Opcao3" class="café" name="carros"> 
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-42.jpg">
+        </label>
+        
+        <label>
+        <input type="radio" value="50" id="Opcao4" class="café" name="carros"> 
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-50.jpg">
+        </label>
+        
+        <label>
+        <input type="radio" value="19" id="Opcao5" class="café" name="carros"> 
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-19.jpg">
+        </label>
+
+    </form>
+
+    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
+
+  </body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>Fase1-Retaguarda</title>
+
+    <!-- CSS -->
+    <!---------------------------------->
+    <style>
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+        background-size: 100%;
+      }
+
+      img#imagem {
+        height: 40%;
+        width: 40%;
+        margin-top: 7%;
+        margin-left: 30%;
+      }
+
+      h1 {
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+      }
+    </style>
+
+    <!-- JavaScript -->
+    <!---------------------------------->
+    <script>
+      const imagens = {
+        1: 'https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png',
+        2: 'https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png',
+        3: 'https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png',
+        4: 'https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png',
+        5: 'https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png',
+      };
+    
+      function gerarimagens() {
+        const valores = Object.keys(imagens);
+        const indicealeatorio = Math.floor(Math.random() * valores.length);
+        const valorEscolhido = valores[indicealeatorio];
+        const imagemselecionada = imagens[valorEscolhido];
+    
+        const imagemElement = document.getElementById('imagem');
+        imagemElement.src = imagemselecionada;
+    
+        enviarValor();
+      }
+    
+      function enviarValor() {
+        const imagemElement = document.getElementById('imagem');
+        const valorEscolhido = obterValorDaImagem(imagemElement.src);
+    
+        socket.emit('valorEscolhido', valorEscolhido);
+
+      }
+    
+      function obterValorDaImagem(src) {
+        const partesDaURL = src.split('/');
+        const nomeDaImagem = partesDaURL[partesDaURL.length - 1];
+        const valor = nomeDaImagem.replace(/\D/g, '');
+    
+        return valor;
+      }
+    
+      window.onload = function () {
+        gerarimagens();
+      };
+    </script>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      const socket = io();
+    </script>
+
+    <script>
+      socket.on(escolhaNum);
+
+      if (escolhaNum == valorEscolhido) {
+      window.location.href = 'Fase1.2-retaguarda.html';
+      }
+      else {
+        window.location.href = 'voceperdeu.html';
+      }
+
+  </script>
+
+  </head>
+
+  <body>
+    <!-- Código HTML -->
+    <!---------------------------------->
+    <h1> Descreva este Veículo para o seu Agente de Campo </h1>
+    <br>
+    <img id="imagem">
+  </body>
+  
+</html>

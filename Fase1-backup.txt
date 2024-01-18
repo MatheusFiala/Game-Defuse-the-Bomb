@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+  <head>
+    <title>Fase 1</title>
+
+    <!-- CSS Da Página -->
+    <!---------------------------------->
+    <style>
+      button {
+        color: rgb(255, 255, 255);
+        text-align: center;
+        margin-left: 45%;
+        border-radius: 40%;
+        background: rgba(109, 106, 106, 0.137);
+        height: 10%;
+        width: 10%;
+      }
+    </style>
+
+    <style>
+      body {
+        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+      background-size: 100%;
+    }
+    </style>
+
+    <style>
+      h1{
+        text-align: center;
+        color: rgb(255, 255, 255);
+        font-size:xx-large;
+        font-family: cursive;
+        margin-top: 50px;
+      }
+    </style>
+
+    <style>
+      form {
+        text-align: center;
+        color: rgb(255, 255, 255);
+      }
+    </style>
+
+  </head>
+  <body>
+    <!------------------------------------------------------->
+    <!--JavaScript-->
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+
+      var socket = io();
+
+      function EnviarEscolha() {
+    
+        var escolhaUsuario;
+        if (document.getElementById("Opcao1").checked) {
+          escolhaUsuario = "2";} 
+
+        else if (document.getElementById("Opcao2").checked) {
+            escolhaUsuario = "4"; }
+
+        else if (document.getElementById("Opcao3").checked) {
+            escolhaUsuario = "5"; }
+
+        else if (document.getElementById("Opcao4").checked) {
+            escolhaUsuario = "7"; }
+
+        else if (document.getElementById("Opcao5").checked) {
+            escolhaUsuario = "8"; }
+        
+        socket.emit("escolhaUsuario", escolhaUsuario);
+
+        socket.on('escolhacorreta', (escolhacorreta));
+
+        if (escolhaUsuario == escolhacorreta) {
+      window.location.href = 'Fase1.2.html';
+      }
+      else {
+        window.location.href = 'voceperdeu.html';
+      }
+
+      };
+
+    </script>
+
+
+     <!-- Código Html -->
+     <!--------------------------------->
+    <h1> Solicite ao seu agente de Retaguarda uma descrição do veículo correto, após isso selecione o veículo que achar correto. </h1>
+    <br>
+    <form id="meuForm">
+        <label> Opção 1 </label>
+        <input type="checkbox" value="1" id="Opcao1" > <br>
+        <br>
+        <img src='https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png' width="25%" height="25%" br>
+        <br>
+        <label> Opção 2 </label>
+        <input type="checkbox" value="2" id="Opcao2" > <br>
+        <br>
+        <img src='https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png' width="25%" height="25%" br>
+        <br><label> Opção 3 </label>
+        <input type="checkbox" value="3" id="Opcao3"> <br>
+        <br>
+        <img src='https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png' width="25%" height="25%" br>
+        <br><label> Opção 4 </label>
+        <input type="checkbox" value="4" id="Opcao4" > <br>
+        <br>
+        <img src='https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png' width="25%" height="25%" br>
+        <br><label> Opção 5 </label>
+        <input type="checkbox" value="5" id="Opcao5" > <br>
+        <br>
+        <img src='https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png' width="25%" height="25%" br>
+        <br>
+    </form>
+
+    <button onclick="EnviarEscolha()"> Prosseguir para Próxima Fase </button>
+
+  </body>
+
+</html>
