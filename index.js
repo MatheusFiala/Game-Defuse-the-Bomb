@@ -435,5 +435,5 @@ const NETWORK_IP = '0.0.0.0';
 const PORT = 5000;
 
 server.listen(PORT, NETWORK_IP, () => {
-  console.log(`Rodando em: http://172.32.0.177:${PORT}`);
+  console.log(`Rodando em: http://172.32.0.138:${PORT}`);
 });
