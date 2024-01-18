@@ -12,7 +12,7 @@ const io = new Server(server);
 app.use("/game-backup", express.static("game-backup",{}))
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/teladelogin.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 
