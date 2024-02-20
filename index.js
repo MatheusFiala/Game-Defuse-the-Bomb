@@ -321,6 +321,10 @@ app.get('/css/style.css', (req, res) => {
   res.sendFile(__dirname + '/css/style.css');
 });
 
+app.get('/canais.json', (req, res) => {
+  res.sendFile(__dirname + '/canais.json');
+});
+
 
 // Setup da parte de Sockets
 const usuários = {};

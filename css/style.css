@@ -1,10 +1,10 @@
 body {
-    background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
+    background-image: url("https://cdn.arstechnica.net/wp-content/uploads/2015/10/4_KeepTalking_TheRoom.jpg");
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
     overflow-y: auto;
 }
-h1{
+/* h1{
     text-align: center;
     color: rgb(255, 255, 255);
     font-size: xx-large;
@@ -37,4 +37,4 @@ button:hover {
 #escolherUsuario {
     margin-left: 25%;
     justify-content: center;
-}
+} */

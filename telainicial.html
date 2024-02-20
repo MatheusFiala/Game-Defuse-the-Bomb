@@ -1,53 +1,99 @@
-<!DOCTYPE html>
-<html>
-<head> 
+  <!DOCTYPE html>
+  <html>
+  <head> 
     <title> Desarmar Bomba </title>
 
-    </head>
-    <h1>Desarmar Bomba</h1>
-    <!------------------------------------------------------->
-    <!-- CSS da Página -->
+    <h1>Selecione seu agente</h1>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <style>
 
     h1{
-    text-align: center;
-    color: rgb(255, 255, 255);
-    font-size:xxx-large;
-    font-family: cursive;
-    margin-top: 80px;
-    }
-    
-    button {
-    color: rgb(255, 255, 255);
-    text-align: center;
-    margin-top: 160px;
-    margin-inline: 80px;
-    margin-left: 24%;
-    width: 160px;
-    height: 150px;
-    background: rgba(109, 106, 106, 0.137);
-    vertical-align: bottom;
-    align-items: center;
-    border-radius: 50px;
-    }
-    
-    body {
-        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
-        background-repeat: no-repeat;
-        background-size: 100vw 100vh;
-        overflow-y: auto;
-      }
-    
-    p {
       text-align: center;
+      color: rgb(0, 0, 0);
+      font-size: 70px;
+      font-family: cursive;
+      margin-top: 80px;
     }
+
+    #conteudo{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 12%;
+    }
+
+    #B1{
+      position: absolute;
+      margin-right: 50%;
+      margin-top: 3%;
+      width: 23%;
+      height: 25%;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    #B2{
+      position: absolute;
+      margin-left: 50%;
+      margin-top: 4%;
+      width: 20%;
+      height: 23%;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    body{
+      background-color: #0276ff2b;
+    }
+
+    #imagem0{
+      width: 25%;
+      height: 0%;
+    }
+
+    #imagem1{
+      width: 20%;
+    }
+
+    #titulos{
+      display: flex;
+      justify-content: space-around;
+    }
+
     </style>
 
-    <!------------------------------------------------------->
-    <!--JavaScript-->
-    
+  </head>
+
+  <body>
+
+    <div id="conteudo">
+
+      <input type="checkbox" id="B1" onclick="window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)">
+
+      <input type="checkbox" id="B2" onclick="window.location.href = 'Fase1-retaguarda.html?' + (document.cookie.match('usuario').input)">
+
+      <img id="imagem0" src="https://i.ibb.co/FJ89rh8/B1-removebg-preview.png">
+
+      <img id="imagem1" src="https://i.ibb.co/phmr94d/B2-removebg-preview.png">
+
+    </div>
+
+    <div id="titulos">
+
+    <h2> Agente De Retaguarda </h2>
+
+    <h2> Agente De Campo </h2>
+
+    </div>
+
+    <!-- <button onclick="window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)"> Iniciar Jogo Como Agente De Campo </button>
+      
+    <button onclick="window.location.href = 'Fase1-retaguarda.html?' + (document.cookie.match('usuario').input)"> Iniciar Jogo Como Agente De Retaguarda </button> -->
+
+
     <script src="/socket.io/socket.io.js"></script>
-    
+
     <script>
       const socket = io();
 
@@ -55,15 +101,6 @@
 
     </script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Código HTML -->
-    <button onclick="window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)"> Iniciar Jogo Como Agente De Campo </button>
-      
-    <button onclick="window.location.href = 'Fase1-retaguarda.html?' + (document.cookie.match('usuario').input)"> Iniciar Jogo Como Agente De Retaguarda </button><br>
-    <br>
-
-    <p> <img src = "https://media.tenor.com/3hmkCltAKz0AAAAi/bomb-cartoon.gif" width="25%" height="25%"> </p>
-
 </body>
+
 </html>

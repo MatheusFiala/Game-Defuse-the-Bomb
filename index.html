@@ -4,14 +4,578 @@
   <meta charset="UTF-8">
   <title>Desarmar Bomba</title>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
+  <script src="https://kit.fontawesome.com/ef613c4e80.js" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="canais.json"></script>
+
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />  
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+
+  <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 120px;
+      overflow: hidden;
+    }
+    #titulo-jogo{
+      font-size: 75px;
+      font-family: cursive;
+      text-align: center;
+      background-image: url("https://usagif.com/wp-content/uploads/gifs/fire-13.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      color: transparent;
+      background-clip: text;
+    }
+    .menu-inicial{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      height: 210px;
+    }
+    .menu-inicial button{
+      width: 280px;
+      padding-block: 10px;
+      font-size: 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 1000ms;
+      border-color: white;
+    }
+    .menu-inicial button:hover{
+      transform: scale(1.2);
+      border-color: rgb(255, 136, 0);
+      border-width: 10px;
+    }
+
+    .fa-bomb,
+    .fa-burst{
+      font-size: 110px;
+      color: snow;
+      position: absolute;
+      right: 40px;
+      bottom: 20px;
+      transition: 800ms;
+    }
+
+    .bomba-pro-meio{
+      bottom: 48%;
+      right: 46%;
+    }
+    .wiggle{
+      animation: wiggle .07s alternate ease infinite;
+    }
+    @keyframes wiggle {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(-30deg); }
+    }
+
+    .boxmodal {
+        display: none;
+        position: fixed;
+        z-index: 1; 
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4);
+      }
+      
+      .conteudomodal {
+        background-color: #000000;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 60%;
+        color: #3dff00;
+      }
+
+      .X  {
+        margin-left: 700px;
+        margin-top: -5px;
+        position: absolute;
+        background: red;
+        color: white;
+        text-align: center;
+        height: 30px;
+        width: 30px;
+        cursor: pointer;
+        z-index: 1;
+      }
+
+      #tableSalasCriadas button{
+        background-color: #3dff00;
+        border-radius: 20px;
+        height: 30px;
+        width: 100px;
+        cursor: pointer;
+        animation-duration: 1000ms;
+      }
+
+      #tableSalasCriadas button:hover{
+        background-color: #ffffff;
+        transform: scale(1.3);
+      }
+
+      .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        border: 1px solid #3dff00; 
+      }
+
+      .cabecalho{
+        padding: 0 !important;
+      }
+
+      #nome{
+        padding: 11px !important;
+      }
+      
+      .dataTables_wrapper .dataTables_filter input {
+        border: 1px solid #aaa;
+        border-radius: 3px;
+        padding: 5px;
+        background-color: transparent;
+        color: inherit;
+        margin-right: 50px;
+        margin-top: -20px; 
+      }
+
+      #conteudomodalcriar{
+        background-color: #000000;
+        margin-top: 18%;
+        margin-left: 30%;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      #criar{
+        background-color: #3dff00;
+        border-radius: 20px;
+        height: 30px;
+        width: 100px;
+        cursor: pointer;
+        animation-duration: 1000ms;
+      }
+
+      #criar:hover{
+        background-color: #ffffff;
+        transform: scale(1.3);
+      }
+
+      label{
+        color: #3dff00;
+      }
+
+  </style>
 </head>
 <body>
-  <h1>Digite sua matrícula P para criar a sala, seu parceiro ira precisar utilizar a sua matricula para ingressar em sua sala.</h1>
+  <h1 id="titulo-jogo">Desarmando a bomba</h1>
 
-  <input type="text" id="escolherUsuario" placeholder="Digite sua matricula P">
+  <!-- <input type="text" id="escolherUsuario" placeholder="Digite sua matricula P"> -->
 
-  <button onclick="criarSala()">Criar Sala</button>
+
+  <div class="menu-inicial">
+    <button id="criarsala1">Criar Sala</button>
+    <button id="entrarsala">Entrar numa sala</button>
+    <button id="leaderbord">Quadro dos líderes</button>
+  </div>
+
+  <div id="modalcriar" class="boxmodal"> 
+
+    <div  id="conteudomodalcriar">
+      <label>
+        Digite Seu Nome:
+        <input type="text" placeholder="Digite Seu Nome">
+    
+      </label>
+
+      <button id="criar" onclick="criarSala()"> Criar </button>
+
+    </div>
+  </div>
+
+  <div id="modalentrar" class="boxmodal"> 
+
+    <div class="conteudomodal">
+
+      <button class="X" onclick="fecharmodalentrar()"> X </button>
+
+      <table id="tableSalasCriadas" class="display">
+        <thead>
+            <tr>
+              <th class="cabecalho"> Id </th>
+              <th id="nome" class="cabecalho"> Nome: </th>
+              <th class="cabecalho"> Jogadores </th>
+              <th class="cabecalho"> Entrar Na Sala </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td>9475</td>
+            <td>Felipe Carlos Feltrin </td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+          <tr>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+          <tr>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+          <tr>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+          <tr>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>2/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+          <tr>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>1/2</td>
+            <td> <button> Entrar </button> </td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+  <div id="modalrecordes" class="boxmodal"> 
+
+    <div class="conteudomodal">
+
+      <button class="X" onclick="fecharmodalrecordes()"> X </button>
+
+      <table id="tableLeaderBoard" class="display">
+        <thead>
+            <tr>
+              <th class="cabecalho"> Colocação </th>
+              <th class="cabecalho"> Id </th>
+              <th id="nome" class="cabecalho"> Nome: </th>
+              <th class="cabecalho"> Tempo </th>
+            </tr>
+        </thead>
+        
+        <tbody>
+          <tr>
+            <td>4°</td>
+            <td>9475</td>
+            <td>Felipe Carlos Feltrin </td>
+            <td>07:00:00</td>
+          </tr>
+
+          <tr>
+            <td>2°</td>
+            <td>7463</td>
+            <td>Chico Bento</td>
+            <td>03:00:00</td>
+          </tr>
+
+          <tr>
+            <td>3°</td>
+            <td>6298</td>
+            <td>Cidnei do gta</td>
+            <td>03:30:00</td>
+          </tr>
+          <tr>
+            <td>1°</td>
+            <td>8367</td>
+            <td>Matheus Fiala</td>
+            <td>00:00:10</td>
+          </tr>
+
+        </tbody>
+      </table>
+
+    </div>
+    
+  </div>
+
+  <i class="fa fa-solid fa-bomb"></i>
+
+<script>
+
+    function readTextFile(file, callback) {
+      var rawFile = new XMLHttpRequest();
+      rawFile.overrideMimeType("application/json");
+      rawFile.open("GET", file, true);
+      rawFile.onreadystatechange = function() {
+        if (rawFile.readyState === 4 && rawFile.status == "200") {
+          callback(rawFile.responseText);
+        }
+        }
+        rawFile.send(null);
+      }
+
+      //usage:
+        readTextFile("C:/Users/Joao.Fiala/Desktop/game-backup/canais.json", function(text){
+          var data = JSON.parse(text);
+          console.log(data);
+      });
+
+    window.onclick = function(event) {
+      if (event.target == modalcriar) {
+        modalcriar.style.display = "none";
+      }
+
+      else if (event.target == modalentrar){
+        modalentrar.style.display = "none";
+      }
+
+      else if (event.target == modalrecordes) {
+        modalrecordes.style.display = "none";
+      }
+    }
+
+
+    // Exibe a parte de Criação de Salas
+    var modalcriar = document.getElementById("modalcriar");
+    
+    var botao = document.getElementById("criarsala1");
+        
+    botao.onclick = function() {
+      setTimeout(() => {
+        
+        modalcriar.style.display = "block";
+
+      }, 1000);
+    }
+    
+    function fecharmodalcriar() {
+      modalcriar.style.display = "none";
+    }
+
+    // Exibe As Salas
+    var modalentrar = document.getElementById("modalentrar");
+    
+    var botao = document.getElementById("entrarsala");
+    
+    botao.onclick = function() {
+      modalentrar.style.display = "block";
+    }
+    
+    function fecharmodalentrar() {
+      modalentrar.style.display = "none";
+    }
+
+    // Exibe o leaderboard
+    var modalrecordes = document.getElementById("modalrecordes");
+    
+    var botao = document.getElementById("leaderbord");
+        
+    botao.onclick = function() {
+      modalrecordes.style.display = "block";
+    }
+    
+    function fecharmodalrecordes() {
+      modalrecordes.style.display = "none";
+    }
+
+
+    $('#tableSalasCriadas').DataTable({
+      "aLengthMenu": [
+        [], []
+      ],
+      "autoWidth": false,
+      "columnDefs": [
+        { "width": "2%", "targets": 0 },
+        { "width": "13%", "targets": 1 },
+        { "width": "2%", "targets": 2 },
+        { "width": "2%", "targets": 3 },
+        {"className": "dt-center", "target": 0 },
+        {"className": "dt-center", "target": 2 },
+        {"className": "dt-center", "target": 3 },
+        {"className": "dt-head-center", "targets": [ 0 , 2 , 3] }
+      ],
+      "language": {
+        "sProcessing":    "Processando...",
+        "sLengthMenu":    "",
+        "sZeroRecords":   "Sem Resultados",
+        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
+        "sInfo":          "Salas Criadas: _TOTAL_ ",
+        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
+        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Procurar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Carregando...",
+        "oPaginate": {
+            "sFirst":    "Primeiro",
+            "sLast":    "Último",
+            "sNext":    "Próximo",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+          "sSortAscending":  ": Ordenar por Ordem Crescente",
+          "sSortDescending": ": Ordenar por Ordem Decrescente"
+        }
+      }
+    });
+    // ----------------------------------------------
+    // datatable-leaderboard
+    // ----------------------------------------------
+
+    $('#tableLeaderBoard').DataTable({
+      "aLengthMenu": [
+        [], []
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "target": 0 },
+        {"className": "dt-center", "target": 1 },
+        {"className": "dt-center", "target": 2 },
+        {"className": "dt-center", "target": 3 },
+        {"className": "dt-head-center", "targets": [ 0, 1 , 2 , 3] }
+      ],
+      "language": {
+        "sProcessing":    "Processando...",
+        "sLengthMenu":    "",
+        "sZeroRecords":   "Sem Resultados",
+        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
+        "sInfo":          "Jogadores: _TOTAL_ ",
+        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
+        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Procurar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Carregando...",
+        "oPaginate": {
+            "sFirst":    "Primeiro",
+            "sLast":    "Último",
+            "sNext":    "Próximo",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+          "sSortAscending":  ": Ordenar por Ordem Crescente",
+          "sSortDescending": ": Ordenar por Ordem Decrescente"
+        }
+      }
+    });
+
+    $('.menu-inicial button').on('mouseenter', function(){ $('.fa-bomb').addClass('wiggle'); })
+    $('.menu-inicial button').on('mouseleave', function(){ $('.fa-bomb').removeClass('wiggle'); })
+    
+    $('.menu-inicial button:nth-child(1)').on('click', function() {
+      $('.fa-bomb').css("scale", "0.2");
+      $('.fa-bomb').addClass('bomba-pro-meio');
+      
+      setTimeout(() => {
+        $('.fa-bomb').removeClass('wiggle');
+        $('.fa-bomb').addClass('fa-burst');
+        $('.fa-bomb').removeClass('fa-bomb');
+        $('.fa-burst').css({"scale": "25", "opacity": "0"});
+        $('body').append('<i class="fa fa-solid fa-bomb" style="opacity: 0;"></i>');
+        
+        setTimeout(() => {
+          $('.fa-burst').remove();
+          $('.fa-bomb').css("opacity", "1");
+        }, 800);
+      }, 800);
+    })
+  </script>
+
 
 
   <script src="/socket.io/socket.io.js"></script>
@@ -37,6 +601,10 @@
     }
 
     io.emit('criarSala', usuarioEscolhido);
+  </script>
+
+  <script>
+    $( ".entrar" ).on("click", criarSala());
   </script>
 </body>
 </html>
