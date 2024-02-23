@@ -11,6 +11,9 @@
 
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.css" />  
   <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
   <style>
     *{
@@ -27,8 +30,8 @@
       overflow: hidden;
     }
     #titulo-jogo{
-      font-size: 75px;
-      font-family: cursive;
+      font-size: 69px;
+      font-family: "Black Ops One", system-ui;
       text-align: center;
       background-image: url("https://usagif.com/wp-content/uploads/gifs/fire-13.gif");
       background-repeat: no-repeat;
@@ -49,13 +52,14 @@
       font-size: 22px;
       border-radius: 8px;
       cursor: pointer;
-      transition: 1000ms;
+      transition: 600ms;
       border-color: white;
+      font-family: "Black Ops One", system-ui;
     }
     .menu-inicial button:hover{
       transform: scale(1.2);
       border-color: rgb(255, 136, 0);
-      border-width: 10px;
+      border-width: 4px;
     }
 
     .fa-bomb,
@@ -101,6 +105,7 @@
         border: 1px solid #888;
         width: 60%;
         color: #3dff00;
+        font-family: "Black Ops One", system-ui;
       }
 
       .X  {
@@ -122,7 +127,8 @@
         height: 30px;
         width: 100px;
         cursor: pointer;
-        animation-duration: 1000ms;
+        transition: 600ms;
+        font-family: "Black Ops One", system-ui;
       }
 
       #tableSalasCriadas button:hover{
@@ -170,7 +176,8 @@
         height: 30px;
         width: 100px;
         cursor: pointer;
-        animation-duration: 1000ms;
+        transition: 600ms;
+        font-family: "Black Ops One", system-ui;
       }
 
       #criar:hover{
@@ -180,6 +187,7 @@
 
       label{
         color: #3dff00;
+        font-family: "Black Ops One", system-ui;
       }
 
   </style>
@@ -187,7 +195,11 @@
 <body>
   <h1 id="titulo-jogo">Desarmando a bomba</h1>
 
-  <!-- <input type="text" id="escolherUsuario" placeholder="Digite sua matricula P"> -->
+  <audio autoplay >
+
+    <source src="https://files.fm/u/dmmkg8hj2y" type="audio/mpeg">
+
+  </audio>
 
 
   <div class="menu-inicial">
@@ -200,8 +212,8 @@
 
     <div  id="conteudomodalcriar">
       <label>
-        Digite Seu Nome:
-        <input type="text" placeholder="Digite Seu Nome">
+        Digite Seu P:
+        <input id="escolherUsuario" type="text" placeholder="Digite Seu P">
     
       </label>
 
@@ -603,8 +615,5 @@
     io.emit('criarSala', usuarioEscolhido);
   </script>
 
-  <script>
-    $( ".entrar" ).on("click", criarSala());
-  </script>
 </body>
 </html>
