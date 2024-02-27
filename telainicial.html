@@ -26,6 +26,12 @@
       margin-top: 12%;
     }
 
+    #conteudo2{
+      display: flex;
+      justify-content: space-around;
+      margin-top: 12%;
+    }
+
     body{
       background-color:#95a8ab52;
       font-family: "Black Ops One", system-ui;
@@ -59,7 +65,7 @@
       justify-content: space-around;
     }
 
-    .boxmodal {
+    #modalretaguarda {
         display: none;
         position: fixed;
         z-index: 1; 
@@ -75,18 +81,44 @@
         background-color: black;
       }
 
-      #conteudomodalcriar {
-        margin-top: -20%;
+      #modalcampo {
+        display: none;
+        position: fixed;
+        z-index: 1; 
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        margin-top: 15%;
+        margin-left: 10%;
+        width: 40%;
+        height: 50%;
+        border-radius: 20px;
+        background-color: black;
+        background-color: black;
+      }
+
+      #conteudomodalretaguarda {
+        display: flex;
+        flex-direction: column;
         padding: 20px;
         color: #3dff00;
         text-align: center;
-        animation: typing 2s infinite steps(3);
       }
 
-      @keyframes typing {
-        from {width: 0%;}
-        to {width: 100%;}
-      };
+      #conteudomodalcampo {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        color: #3dff00;
+        text-align: center;
+      }
+
+      #bonecos{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: -10%;
+      }
 
     </style>
 
@@ -96,23 +128,41 @@
 
     <div id="conteudo">
 
-      <div id="modalretaguarda" class="boxmodal"> 
+      <div id="modalretaguarda"> 
 
-        <div  id="conteudomodalcriar">
-          <p> 
+        <div  id="conteudomodalretaguarda">
             <h2> Agente de Retaguarda </h2> <br>
-            Este agente irá trabalhar passando as instruções
-            para o agente de campo.<br>
-            O agente de campo terá que realizar várias escolhas
-            e sua missão será ajudá-lo a realizar as escolhas corretas.<br>
-            A vida de seu colega está em suas mãos!
+            <p id="textoA1"> 
+              Como agente de retaguarda você vai operar da base de operações do Esquadrão Antibombas.
+              seu papel é instruir seu agente de campo a fazer as escolhas corretas.
+              Você terá que fazer com que seu colega siga examente tudo oque você falar, caso não consiga fazer isso a cidade explodirá causando uma enorme tragédia.
+              O destino da cidade está nas suas mãos e nas mãos de seu colega.
           </p>
+          </div>
         </div>
       </div>
 
-      <img id="imagem0" src="https://i.ibb.co/FJ89rh8/B1-removebg-preview.png" onmouseout="fecharmodalretaguarda()">
+      <div id="conteudo2">
 
-      <img id="imagem1" src="https://i.ibb.co/phmr94d/B2-removebg-preview.png">
+        <div id="modalcampo"> 
+  
+          <div  id="conteudomodalcampo">
+              <h2> Agente de Campo </h2> <br>
+              <p id="textoA2"> 
+                Como agente de Campo você ira sair da base de operações do Esquadrão Antibombas e terá que se locomover até o local onde a bomba foi plantada.
+                Você trabalhara com um agente de retaguarda que passará todas as instruções para você.
+                Você terá que seguir examente tudo oque ele falar, caso não consiga fazer isso a cidade explodirá causando causando uma enorme tragédia.
+                O destino da cidade está nas suas mãos e nas mãos de seu colega.
+            </p>
+            </div>
+          </div>
+        </div>
+
+    <div id="bonecos">
+
+      <img id="imagem0" src="https://i.ibb.co/FJ89rh8/B1-removebg-preview.png" onmouseover="escrever(titulo)" onmouseout="fecharmodalretaguarda()">
+
+      <img id="imagem1" src="https://i.ibb.co/phmr94d/B2-removebg-preview.png" onmouseover="escrever2(titulo2)" onmouseout="fecharmodalcampo()">
 
     </div>
 
@@ -139,7 +189,7 @@
         window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)
       });
 
-      // modal ----------------------------------------
+      // modal retaguarda ----------------------------------------
 
       var modalretaguarda = document.getElementById("modalretaguarda");
       
@@ -155,7 +205,67 @@
         
       function fecharmodalretaguarda() {
         modalretaguarda.style.display = "none";
+        titulo = "";
       }
+
+      // modal campo --------------------------------------------------
+
+      var modalcampo = document.getElementById("modalcampo");
+      
+      img1.addEventListener(
+        "mouseover",
+        function(event) {
+          modalcampo.style.display = "block";
+      });
+        
+      img1.onclick = function() {
+        modalcampo.style.display = "none";
+      }
+        
+      function fecharmodalcampo() {
+        modalcampo.style.display = "none";
+        titulo2 = "";
+      }
+
+    // maquina de escrever (retaguarda) ----------------------------------------
+
+        function escrever(titulo){
+
+    var textoArray = titulo.innerHTML.split('');
+
+    titulo.innerHTML = ' ';
+
+    textoArray.forEach(function(letra, i){   
+        
+      setTimeout(function(){
+
+        titulo.innerHTML += letra;
+
+        }, 40 * i)
+      });
+    }
+
+    // maquina de escrever (campo) ----------------------------------------
+
+        function escrever2(titulo2){
+
+    var textoArray2 = titulo2.innerHTML.split('');
+
+    titulo2.innerHTML = ' ';
+
+    textoArray2.forEach(function(letra, i){   
+        
+      setTimeout(function(){
+
+        titulo2.innerHTML += letra;
+
+        }, 40 * i)
+      });
+    }
+
+      var titulo = document.querySelector('#textoA1');
+
+      var titulo2 = document.querySelector('#textoA2');
 
       const socket = io();
 
