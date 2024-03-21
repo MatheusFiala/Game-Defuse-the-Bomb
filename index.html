@@ -204,7 +204,7 @@
 
   <div class="menu-inicial">
     <button id="criarsala1">Criar Sala</button>
-    <button id="entrarsala">Entrar numa sala</button>
+    <button id="entrarsala" onclick="ExibirSalas()">Entrar numa sala</button>
     <button id="leaderbord">Quadro dos líderes</button>
   </div>
 
@@ -608,12 +608,19 @@
     function criarSala() {
       const escolherUsuarioInput = document.getElementById('escolherUsuario');
       const usuarioEscolhido = escolherUsuarioInput.value;
+      socket.emit('nome', usuarioEscolhido)
         
       document.cookie = 'usuario='+usuarioEscolhido+'; path=/'
       window.location.href = `/telainicial.html?usuario=${usuarioEscolhido}`;
     }
 
     io.emit('criarSala', usuarioEscolhido);
+
+    function ExibirSalas() {
+      socket.on('Dados das Salas', res);
+      var DadosSalas = res;
+      console.log(DadosSalas);
+    }
   </script>
 
 </body>

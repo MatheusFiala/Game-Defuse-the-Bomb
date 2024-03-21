@@ -27,7 +27,7 @@
     overflow-y: auto;
     }
     
-    button {
+    #b {
     color: rgb(255, 255, 255);
     text-align: center;
     background: rgba(109, 106, 106, 0.137);
@@ -37,6 +37,7 @@
     font-family: cursive;
     align-items: center; 
     border-radius: 35%;
+    margin-top: 5%;
     }
 
     p {
@@ -49,12 +50,23 @@
         -webkit-text-stroke-color: #000;
     }
 
+    #texto{
+        color: rgb(0, 0, 0);
+        text-align: center;
+        font-size: x-large;
+        text-shadow: 0px 0px 15px black;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+    }
+
     </style>
 
     <!------------------------------------------------------->
     <!-- HTML -->
 
-    <button onclick="window.location.href = '/'"> Recomeçar </button>
+    <div id="texto"> Digite o nome da sua dupla para aparecer no Quadro dos líderes <input type="text" id="nomeR"> <button onclick="enviarnome()">enviar</button> </div>
+
+    <button id="b" onclick="window.location.href = '/'"> Recomeçar </button>
 
     <p> Criado e Desenvolvido por João Matheus
         Auxiliado por Thiago Henrique (Mago do Back-End)
@@ -62,5 +74,17 @@
     </p>
 
 </body>
+
+<script src="/socket.io/socket.io.js"> </script>
+<script> const socket = io(); </script>
+
+<script>
+
+    function enviarnome() {
+        var nomedupla = document.getElementById('nomeR').value
+        socket.emit("NomeDupla:", nomedupla)
+    }
+
+</script>
 
 </html>

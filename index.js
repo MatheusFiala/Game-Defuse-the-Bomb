@@ -1,7 +1,9 @@
+
 // Servidor Web
 const express = require('express');
 const app = express();
 const http = require('http');
+const { join } = require ('node:path')
 const server = http.createServer(app);
 
 // Adiciona Suporte para os Sockets
@@ -369,10 +371,22 @@ function remove_canal(canal){
 
  var escolha = 0;
 
+ var tempo = 2000
+
+    function Regressiva(){
+        if (tempo) {
+            tempo --
+            console.log(tempo)
+
+            if (tempo == 0) {
+                clearInterval(relogio)
+            }
+        }
+    }
+
 io.on('connection', (socket) => {
   console.log(`[${socket.id}] Usuário_Conectado`);
   usuários[socket.id] = { id: socket.id };
-
 
   io.emit('atualizarListaUsuarios', Object.keys(usuários));
 
@@ -407,6 +421,10 @@ io.on('connection', (socket) => {
   
   });
 
+  socket.on("iniciartempo",(i) =>{
+    var relogio = setInterval(Regressiva, 1000);
+  });
+
   socket.on('valorEscolhido', (valorEscolhido) => {
     socket.join(valorEscolhido['usuario']);
 
@@ -431,13 +449,72 @@ io.on('connection', (socket) => {
     }
     
     socket.join(nomeDaSala);
-  });  
+  });
 
+  socket.on('nome', (usuarioEscolhido) => {
+    var nomes = usuarioEscolhido;
+    
+    // conexão com banco de dados
+    
+    async function connect() {
+      if (global.connection)
+            return global.connection.connect();
+     
+        const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+        console.log("Criou pool de conexões no PostgreSQL!");
+    
+        
+        const res = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
+        console.log(res.rows);
+        client.release();
+
+        const Data = await client.query("SELECT to_char(now(), 'DD/MM/YYYY   |  HH24:MI:SS')");
+
+        var Hora = (Data.rows[0]);
+        
+        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,'1/2', Hora]);
+        console.log('Adicionado com sucesso');
+    
+        // client.release();
+    
+        global.connection = pool;
+        // return pool.connect();
+
+        socket.emit('Dados das Salas', res);
+    }
+    connect();
+  });
+
+  socket.on("NomeDupla:", (nomedupla) => {
+  
+    async function inserir(tempo) {
+
+      const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+        console.log("Criou pool de conexões no PostgreSQL!");
+  
+      const Insert_tempo = await client.query('INSERT INTO testes_praticos."Recordes" VALUES($1,$2)', [nomedupla , tempo]);
+          console.log('Adicionado com sucesso em Recordes');
+    }
+    inserir(tempo);
+    
+  });
+  
 });
 
+          
 const NETWORK_IP = '0.0.0.0';
 const PORT = 5000;
 
 server.listen(PORT, NETWORK_IP, () => {
-  console.log(`Rodando em: http://172.32.0.138:${PORT}`);
+  console.log(`Rodando em: http://172.32.2.159:${PORT}`);
 });

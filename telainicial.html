@@ -187,6 +187,8 @@
 
       img1.addEventListener("click", function() {
         window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)
+        var i = 0
+        socket.emit("iniciartempo",i);
       });
 
       // modal retaguarda ----------------------------------------
