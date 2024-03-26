@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Desarmar Bomba</title>
+  <link rel="web site icon" type="png" href="https://img.icons8.com/3d-fluency/94/air-raider.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
@@ -204,7 +205,7 @@
 
   <div class="menu-inicial">
     <button id="criarsala1">Criar Sala</button>
-    <button id="entrarsala" onclick="ExibirSalas()">Entrar numa sala</button>
+    <button id="entrarsala">Entrar numa sala</button>
     <button id="leaderbord">Quadro dos líderes</button>
   </div>
 
@@ -241,7 +242,7 @@
         <tbody>
           <tr>
             <td>9475</td>
-            <td>Felipe Carlos Feltrin </td>
+            <td id="teste">  </td>
             <td>2/2</td>
             <td> <button> Entrar </button> </td>
           </tr>
@@ -465,6 +466,7 @@
     
     botao.onclick = function() {
       modalentrar.style.display = "block";
+      ExibirSalas();
     }
     
     function fecharmodalentrar() {
@@ -593,6 +595,18 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
+
+    function ExibirSalas() {
+      enviar = 0
+      socket.emit('enviar', enviar)
+        
+      socket.on('Dados das Salas', (dados_salas) => {
+        console.log(dados_salas);
+        document.getElementById("teste").innerHTML = dados_salas;
+      });
+
+    }
+
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -616,11 +630,6 @@
 
     io.emit('criarSala', usuarioEscolhido);
 
-    function ExibirSalas() {
-      socket.on('Dados das Salas', res);
-      var DadosSalas = res;
-      console.log(DadosSalas);
-    }
   </script>
 
 </body>

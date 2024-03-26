@@ -379,7 +379,7 @@ function remove_canal(canal){
             console.log(tempo)
 
             if (tempo == 0) {
-                clearInterval(relogio)
+                clearInterval(tempo)
             }
         }
     }
@@ -451,6 +451,27 @@ io.on('connection', (socket) => {
     socket.join(nomeDaSala);
   });
 
+  socket.on('enviar', (enviar) => {
+
+    async function Select() {
+
+      const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+        console.log("Criou pool de conexões no PostgreSQL!");
+  
+        const Salas = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
+        console.log('Select feito com sucesso');
+        var dados_salas = (Salas.rows);
+        console.log(dados_salas);
+        socket.emit('Dados das Salas', dados_salas);
+    }
+    Select();
+  });
+
   socket.on('nome', (usuarioEscolhido) => {
     var nomes = usuarioEscolhido;
     
@@ -484,8 +505,6 @@ io.on('connection', (socket) => {
     
         global.connection = pool;
         // return pool.connect();
-
-        socket.emit('Dados das Salas', res);
     }
     connect();
   });
