@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Desarmar Bomba</title>
-  <link rel="web site icon" type="png" href="https://img.icons8.com/3d-fluency/94/air-raider.png">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.js"></script>
@@ -21,6 +20,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: "Black Ops One", system-ui;
     }
     body{
       height: 100vh;
@@ -166,30 +166,55 @@
         padding: 20px;
         border: 1px solid #888;
         width: 40%;
-        display: flex;
-        align-items: center;
+        height: 22%;
         justify-content: space-evenly;
+        display: grid;
+        place-items: center;
       }
 
       #criar{
         background-color: #3dff00;
         border-radius: 20px;
-        height: 30px;
-        width: 100px;
+        height: 35px;
+        width: 80px;
         cursor: pointer;
         transition: 600ms;
         font-family: "Black Ops One", system-ui;
+        font-size: 115%;
       }
 
       #criar:hover{
         background-color: #ffffff;
-        transform: scale(1.3);
+        transform: scale(1.1);
       }
 
-      label{
+      #digite_seu_nome{
         color: #3dff00;
         font-family: "Black Ops One", system-ui;
+        width: 60%;
+        text-align: center;
+        font-size: 160%;
+        
       }
+
+      #escolherusuario{
+        width: 100%;
+        text-align: center;
+        height: 30px;
+        margin-top: 3%;
+      }
+
+      #botaoc{
+        text-align: center;
+        margin-top: 1%;
+      }
+
+      #labeld{
+        width: 100%;
+        display: grid;
+        place-items: center;
+      }
+      
 
   </style>
 </head>
@@ -205,20 +230,23 @@
 
   <div class="menu-inicial">
     <button id="criarsala1">Criar Sala</button>
-    <button id="entrarsala">Entrar numa sala</button>
+    <button id="entrarsala" onclick="ExibirSalas()">Entrar numa sala</button>
     <button id="leaderbord">Quadro dos líderes</button>
   </div>
 
   <div id="modalcriar" class="boxmodal"> 
 
-    <div  id="conteudomodalcriar">
-      <label>
-        Digite Seu P:
-        <input id="escolherUsuario" type="text" placeholder="Digite Seu P">
-    
-      </label>
+    <div  id="conteudomodalcriar">  
 
-      <button id="criar" onclick="criarSala()"> Criar </button>
+      <div id="labeld">
+        <label id="digite_seu_nome">
+          Digite seu nome:<input id="escolherusuario" type="text" placeholder="Digite seu nome">
+        </label>
+      </div>
+
+      <div id="botaoc">
+        <button id="criar" onclick="criarSala()"> Criar </button>
+      </div>
 
     </div>
   </div>
@@ -242,7 +270,7 @@
         <tbody>
           <tr>
             <td>9475</td>
-            <td id="teste">  </td>
+            <td>Felipe Carlos Feltrin </td>
             <td>2/2</td>
             <td> <button> Entrar </button> </td>
           </tr>
@@ -466,7 +494,6 @@
     
     botao.onclick = function() {
       modalentrar.style.display = "block";
-      ExibirSalas();
     }
     
     function fecharmodalentrar() {
@@ -595,18 +622,6 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-
-    function ExibirSalas() {
-      enviar = 0
-      socket.emit('enviar', enviar)
-        
-      socket.on('Dados das Salas', (dados_salas) => {
-        console.log(dados_salas);
-        document.getElementById("teste").innerHTML = dados_salas;
-      });
-
-    }
-
     function getCookie(name) {
       const value = `; ${document.cookie}`;
       const parts = value.split(`; ${name}=`);
@@ -630,6 +645,11 @@
 
     io.emit('criarSala', usuarioEscolhido);
 
+    function ExibirSalas() {
+      socket.on('Dados das Salas', res);
+      var DadosSalas = res;
+      console.log(DadosSalas);
+    }
   </script>
 
 </body>
