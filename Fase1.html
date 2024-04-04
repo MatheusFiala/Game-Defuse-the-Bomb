@@ -108,6 +108,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 
+      window.onload = function(e){ 
+        aleatorio();
+      }
+
       var socket = io();
 
       function getCookie(name) {
@@ -143,16 +147,62 @@
 
       
       socket.on('vitoria', (escolhacorreta) => {
-          console.log(escolhacorreta, 'vitoria');
-          
-          if (escolhacorreta) {
-              window.location.href = 'Fase1.2.html?' + (document.cookie.match('usuario').input);
-            }
-          else {
-              window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
-            }
+        console.log(escolhacorreta, 'vitoria');
+        
+        if (escolhacorreta) {
+            window.location.href = 'Fase1.2.html?' + (document.cookie.match('usuario').input);
           }
-        );
+        else {
+            window.location.href = 'voceperdeu.html?' + (document.cookie.match('usuario').input);
+          }
+        }
+      );
+
+      function aleatorio() {
+        const imagens = {
+          0: 'https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png',
+          1: 'https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png',
+          2: 'https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png',
+          3: 'https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png',
+          4: 'https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png',
+          5: 'https://i.ibb.co/94L98wb/Carro-2-6.png',
+          6: 'https://i.ibb.co/WfPgrPq/Carro-2-7.png',
+          7: 'https://i.ibb.co/mGD0FkJ/Carro-2-8.png',
+          8: 'https://i.ibb.co/TTmzMfh/Carro-2-9.png',
+          9: 'https://i.ibb.co/G5n0DQz/Carro-2-10.png',
+        };
+
+        var carros = [];
+
+        const valores = Object.keys(imagens);
+        while (carros.length < 5) {
+          var novocarro = parseInt(Math.random() * valores.length);
+          if (!carros.includes(novocarro)){
+            carros.push(novocarro);
+            }
+        }
+        console.log(carros);
+
+        const imagemselecionada1 = imagens[carros [0]];
+        const imagemnohtml1 = document.getElementById('Opcao1');
+        imagemnohtml1.src = imagemselecionada1;
+
+        const imagemselecionada2 = imagens[carros [1]];
+        const imagemnohtml2 = document.getElementById('Opcao2');
+        imagemnohtml2.src = imagemselecionada2;
+
+        const imagemselecionada3 = imagens[carros [2]];
+        const imagemnohtml3 = document.getElementById('Opcao3');
+        imagemnohtml3.src = imagemselecionada3;
+
+        const imagemselecionada4 = imagens[carros [3]];
+        const imagemnohtml4 = document.getElementById('Opcao4');
+        imagemnohtml4.src = imagemselecionada4;
+
+        const imagemselecionada5 = imagens[carros [4]];
+        const imagemnohtml5 = document.getElementById('Opcao5');
+        imagemnohtml5.src = imagemselecionada5;
+      }
 
     </script>
 
@@ -161,36 +211,71 @@
      <!--------------------------------->
     <h1> Solicite ao seu agente de Retaguarda uma descrição do veículo correto, após isso selecione o veículo que achar correto. </h1>
     <br>
+
     <form id="meuForm">
+
+        <img value="1" id="Opcao1" class="café" name="carros">
+        <img value="2" id="Opcao2" class="café" name="carros">
+        <img value="3" id="Opcao3" class="café" name="carros">
+        <img value="4" id="Opcao4" class="café" name="carros">
+        <img value="5" id="Opcao5" class="café" name="carros">
+
+    </form>
+    <!-- <form id="meuForm">
 
         <div>
           <label for="Opcao1">
-            <input type="radio" value="1" id="Opcao1" class="café" name="carros">
+            <input type="radio" value="0" id="Opcao1" class="café" name="carros">
             <img src='https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png' class="imagens">
           </label>
         </div>
 
         <label for="Opcao2">
-        <input type="radio" value="2" id="Opcao2" class="café" name="carros">
+        <input type="radio" value="1" id="Opcao2" class="café" name="carros">
         <img src='https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png' class="imagens">
         </label> 
 
         <label for="Opcao3">
-        <input type="radio" value="3" id="Opcao3" class="café" name="carros">
+        <input type="radio" value="2" id="Opcao3" class="café" name="carros">
         <img src='https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png' class="imagens">
         </label>
 
         <label for="Opcao4">
-        <input type="radio" value="4" id="Opcao4" class="café" name="carros">
+        <input type="radio" value="3" id="Opcao4" class="café" name="carros">
         <img src='https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png' class="imagens">
         </label>
 
         <label for="Opcao5">
-        <input type="radio" value="5" id="Opcao5" class="café" name="carros">
+        <input type="radio" value="4" id="Opcao5" class="café" name="carros">
         <img src='https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png' class="imagens">
         </label>
 
-      </form>
+        <label for="Opcao6">
+        <input type="radio" value="5" id="Opcao6" class="café" name="carros">
+        <img src='https://i.ibb.co/94L98wb/Carro-2-6.png' class="imagens">
+        </label>
+
+        <label for="Opcao7">
+        <input type="radio" value="6" id="Opcao7" class="café" name="carros">
+        <img src='https://i.ibb.co/WfPgrPq/Carro-2-7.png' class="imagens">
+        </label>
+
+        <label for="Opcao8">
+        <input type="radio" value="7" id="Opcao8" class="café" name="carros">
+        <img src='https://i.ibb.co/mGD0FkJ/Carro-2-8.png' class="imagens">
+        </label>
+        
+        <label for="Opcao9">
+        <input type="radio" value="8" id="Opcao9" class="café" name="carros">
+        <img src='https://i.ibb.co/TTmzMfh/Carro-2-9.png' class="imagens">
+        </label>
+        
+        <label for="Opcao10">
+        <input type="radio" value="9" id="Opcao10" class="café" name="carros">
+        <img src='https://i.ibb.co/G5n0DQz/Carro-2-10.png' class="imagens">
+        </label>
+
+      </form> -->
       
       <div id="enviar"> <button onclick="EnviarEscolha()"> Enviar Escolha </button> </div>
 
