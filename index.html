@@ -166,7 +166,6 @@
         padding: 20px;
         border: 1px solid #888;
         width: 40%;
-        height: 22%;
         justify-content: space-evenly;
         display: grid;
         place-items: center;
@@ -181,6 +180,7 @@
         transition: 600ms;
         font-family: "Black Ops One", system-ui;
         font-size: 115%;
+        margin-top: 10%;
       }
 
       #criar:hover{
@@ -269,110 +269,6 @@
         
         <tbody>
           <tr>
-            <td>9475</td>
-            <td>Felipe Carlos Feltrin </td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-          <tr>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-          <tr>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-          <tr>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-          <tr>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>2/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>1/2</td>
-            <td> <button> Entrar </button> </td>
-          </tr>
-
-          <tr>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>1/2</td>
             <td> <button> Entrar </button> </td>
           </tr>
 
@@ -391,39 +287,17 @@
       <table id="tableLeaderBoard" class="display">
         <thead>
             <tr>
-              <th class="cabecalho"> Colocação </th>
+              <th class="cabecalho"> Nome </th>
+              <th id="nome" class="cabecalho"> Tempo </th>
               <th class="cabecalho"> Id </th>
-              <th id="nome" class="cabecalho"> Nome: </th>
-              <th class="cabecalho"> Tempo </th>
             </tr>
         </thead>
         
         <tbody>
           <tr>
-            <td>4°</td>
-            <td>9475</td>
-            <td>Felipe Carlos Feltrin </td>
-            <td>07:00:00</td>
-          </tr>
-
-          <tr>
-            <td>2°</td>
-            <td>7463</td>
-            <td>Chico Bento</td>
-            <td>03:00:00</td>
-          </tr>
-
-          <tr>
-            <td>3°</td>
-            <td>6298</td>
-            <td>Cidnei do gta</td>
-            <td>03:30:00</td>
-          </tr>
-          <tr>
-            <td>1°</td>
-            <td>8367</td>
-            <td>Matheus Fiala</td>
-            <td>00:00:10</td>
+            <td> </td>
+            <td> 1 </td>
+            <td> </td>
           </tr>
 
         </tbody>
@@ -494,6 +368,7 @@
     
     botao.onclick = function() {
       modalentrar.style.display = "block";
+      ExibirSalas();
     }
     
     function fecharmodalentrar() {
@@ -507,93 +382,14 @@
         
     botao.onclick = function() {
       modalrecordes.style.display = "block";
+      ExibirRecordes();
     }
     
     function fecharmodalrecordes() {
       modalrecordes.style.display = "none";
     }
 
-
-    $('#tableSalasCriadas').DataTable({
-      "aLengthMenu": [
-        [], []
-      ],
-      "autoWidth": false,
-      "columnDefs": [
-        { "width": "2%", "targets": 0 },
-        { "width": "13%", "targets": 1 },
-        { "width": "2%", "targets": 2 },
-        { "width": "2%", "targets": 3 },
-        {"className": "dt-center", "target": 0 },
-        {"className": "dt-center", "target": 2 },
-        {"className": "dt-center", "target": 3 },
-        {"className": "dt-head-center", "targets": [ 0 , 2 , 3] }
-      ],
-      "language": {
-        "sProcessing":    "Processando...",
-        "sLengthMenu":    "",
-        "sZeroRecords":   "Sem Resultados",
-        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
-        "sInfo":          "Salas Criadas: _TOTAL_ ",
-        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
-        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
-        "sInfoPostFix":   "",
-        "sSearch":        "Procurar:",
-        "sUrl":           "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Carregando...",
-        "oPaginate": {
-            "sFirst":    "Primeiro",
-            "sLast":    "Último",
-            "sNext":    "Próximo",
-            "sPrevious": "Anterior"
-        },
-        "oAria": {
-          "sSortAscending":  ": Ordenar por Ordem Crescente",
-          "sSortDescending": ": Ordenar por Ordem Decrescente"
-        }
-      }
-    });
-    // ----------------------------------------------
-    // datatable-leaderboard
-    // ----------------------------------------------
-
-    $('#tableLeaderBoard').DataTable({
-      "aLengthMenu": [
-        [], []
-      ],
-      "columnDefs": [
-        {"className": "dt-center", "target": 0 },
-        {"className": "dt-center", "target": 1 },
-        {"className": "dt-center", "target": 2 },
-        {"className": "dt-center", "target": 3 },
-        {"className": "dt-head-center", "targets": [ 0, 1 , 2 , 3] }
-      ],
-      "language": {
-        "sProcessing":    "Processando...",
-        "sLengthMenu":    "",
-        "sZeroRecords":   "Sem Resultados",
-        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
-        "sInfo":          "Jogadores: _TOTAL_ ",
-        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
-        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
-        "sInfoPostFix":   "",
-        "sSearch":        "Procurar:",
-        "sUrl":           "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Carregando...",
-        "oPaginate": {
-            "sFirst":    "Primeiro",
-            "sLast":    "Último",
-            "sNext":    "Próximo",
-            "sPrevious": "Anterior"
-        },
-        "oAria": {
-          "sSortAscending":  ": Ordenar por Ordem Crescente",
-          "sSortDescending": ": Ordenar por Ordem Decrescente"
-        }
-      }
-    });
+    // Animação Bomba
 
     $('.menu-inicial button').on('mouseenter', function(){ $('.fa-bomb').addClass('wiggle'); })
     $('.menu-inicial button').on('mouseleave', function(){ $('.fa-bomb').removeClass('wiggle'); })
@@ -635,7 +431,7 @@
     socket.emit('criarSala', usuario);
 
     function criarSala() {
-      const escolherUsuarioInput = document.getElementById('escolherUsuario');
+      const escolherUsuarioInput = document.getElementById('escolherusuario');
       const usuarioEscolhido = escolherUsuarioInput.value;
       socket.emit('nome', usuarioEscolhido)
         
@@ -645,12 +441,121 @@
 
     io.emit('criarSala', usuarioEscolhido);
 
-    function ExibirSalas() {
-      socket.on('Dados das Salas', res);
-      var DadosSalas = res;
-      console.log(DadosSalas);
-    }
-  </script>
+  function ExibirSalas() {
+
+    var i = 0
+    socket.emit('solicitardados',(i));
+
+    socket.on('DadosSalas',(dados_salas) => {
+    console.log(dados_salas);
+
+    $('#tableSalasCriadas').DataTable({
+      "aLengthMenu": [
+        [], []
+      ],
+      "autoWidth": false,
+      "columnDefs": [
+        { "width": "2%", "targets": 0 },
+        { "width": "13%", "targets": 1 },
+        { "width": "2%", "targets": 2 },
+        { "width": "2%", "targets": 3 },
+        {"className": "dt-center", "target": 0 },
+        {"className": "dt-center", "target": 2 },
+        {"className": "dt-center", "target": 3 },
+        {"className": "dt-head-center", "targets": [ 0 , 2 , 3] }
+      ],
+      "destroy": true,
+      "data": dados_salas,
+      "columns": [
+        { "data": "Nome", "title": "Nome" },
+        { "data": "Qtde_Jogadores", "title": "Qtde_Jogadores" },
+        { "data": "Data_Criação", "title": "Data_Criação" },
+        { "data": "Id", "title": "Id" }
+        ],
+      "language": {
+        "sProcessing":    "Processando...",
+        "sLengthMenu":    "",
+        "sZeroRecords":   "Sem Resultados",
+        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
+        "sInfo":          "Salas Criadas: _TOTAL_ ",
+        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
+        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Procurar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Carregando...",
+        "oPaginate": {
+            "sFirst":    "Primeiro",
+            "sLast":    "Último",
+            "sNext":    "Próximo",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+          "sSortAscending":  ": Ordenar por Ordem Crescente",
+          "sSortDescending": ": Ordenar por Ordem Decrescente"
+        }
+      }
+      
+    });
+    
+  });
+};
+
+  function ExibirRecordes() {
+    
+    var e = 0
+    socket.emit('solicitardadosRecordes',(e));
+
+    socket.on('DadosRecordes',(dados_Recordes) => {
+    console.log(dados_Recordes);
+
+    $('#tableLeaderBoard').DataTable({
+      "aLengthMenu": [
+        [], []
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "target": 0 },
+        {"className": "dt-center", "target": 1 },
+        {"className": "dt-center", "target": 2 },
+        {"className": "dt-head-center", "targets": [ 0, 1 , 2 ] }
+      ],
+      "destroy": true,
+      "data": dados_Recordes,
+      "columns": [
+        { "data": "Nome", "title": "Nome" },
+        { "data": "Tempo", "title": "Tempo"},
+        { "data": "Id", "title": "Id" }
+        ],
+      "language": {
+        "sProcessing":    "Processando...",
+        "sLengthMenu":    "",
+        "sZeroRecords":   "Sem Resultados",
+        "sEmptyTable":    "Nenhum Dado Disponível Nesta Tabela",
+        "sInfo":          "Jogadores: _TOTAL_ ",
+        "sInfoEmpty":     "Mostrando registros de 0 a 0 de um total de 0 registros",
+        "sInfoFiltered":  "(filtrado de um total de _MAX_ registros)",
+        "sInfoPostFix":   "",
+        "sSearch":        "Procurar:",
+        "sUrl":           "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Carregando...",
+        "oPaginate": {
+            "sFirst":    "Primeiro",
+            "sLast":    "Último",
+            "sNext":    "Próximo",
+            "sPrevious": "Anterior"
+        },
+        "oAria": {
+          "sSortAscending":  ": Ordenar por Ordem Crescente",
+          "sSortDescending": ": Ordenar por Ordem Decrescente"
+        }
+      }
+    });
+
+    });
+  };
+</script>
 
 </body>
 </html>

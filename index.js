@@ -328,7 +328,6 @@ app.get('/canais.json', (req, res) => {
 });
 
 
-// Setup da parte de Sockets
 const usuários = {};
 const canais = {}
 
@@ -384,6 +383,8 @@ function remove_canal(canal){
         }
     }
 
+  // Setup da parte de Sockets
+
 io.on('connection', (socket) => {
   console.log(`[${socket.id}] Usuário_Conectado`);
   usuários[socket.id] = { id: socket.id };
@@ -395,6 +396,49 @@ io.on('connection', (socket) => {
     delete usuários[socket.id];
 
     io.emit('atualizarListaUsuarios', Object.keys(usuários));
+  });
+
+  socket.on('solicitardados', (i) => {
+
+    async function Select_Salas() {
+
+      const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+        console.log("Criou pool de conexões no PostgreSQL!");
+  
+        const Salas = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
+        console.log('Select feito com sucesso');
+        var dados_salas = (Salas.rows);
+        console.log(dados_salas);
+        socket.emit('DadosSalas',(dados_salas));
+    };
+    Select_Salas();
+  });
+
+  socket.on('solicitardadosRecordes', (e) => {
+
+    async function Select_Recordes() {
+
+      const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+        console.log("Criou pool de conexões no PostgreSQL!");
+  
+        const recordes = await client.query('SELECT * FROM testes_praticos."Recordes"');
+
+        console.log('Select feito com sucesso');
+        var dados_Recordes = (recordes.rows);
+        console.log(dados_Recordes);
+        socket.emit('DadosRecordes',(dados_Recordes));
+    };
+    Select_Recordes();
   });
 
   socket.on('escolhaUsuario', (escolhaUser) => {
@@ -489,16 +533,21 @@ io.on('connection', (socket) => {
         const client = await pool.connect();
         console.log("Criou pool de conexões no PostgreSQL!");
     
-        
-        const res = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
-        console.log(res.rows);
         client.release();
 
-        const Data = await client.query("SELECT to_char(now(), 'DD/MM/YYYY   |  HH24:MI:SS')");
-
-        var Hora = (Data.rows[0]);
+        // Inicio data atual
+        const currentDate = new Date();
+        const day = String(currentDate.getDate()).padStart(2, '0');
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const year = currentDate.getFullYear();
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
         
-        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,'1/2', Hora]);
+        const formattedDate = `${day}/${month}/${year} | ${hours}:${minutes}:${seconds}`;
+        // Fim data atual
+
+        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,'1/2', formattedDate]);
         console.log('Adicionado com sucesso');
     
         // client.release();
