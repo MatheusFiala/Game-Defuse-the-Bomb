@@ -37,54 +37,19 @@
     <!-- JavaScript -->
     <!---------------------------------->
     <script>
+
       const imagens = {
-        1: 'https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png',
-        2: 'https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png',
-        3: 'https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png',
-        4: 'https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png',
-        5: 'https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png',
-      };
-    
-      function gerarimagens() {
-        const valores = Object.keys(imagens);
-        const indicealeatorio = Math.floor(Math.random() * valores.length);
-        const valorEscolhido = valores[indicealeatorio];
-        const imagemselecionada = imagens[valorEscolhido];
-    
-        const imagemElement = document.getElementById('imagem');
-        imagemElement.src = imagemselecionada;
-    
-        enviarValor();
-      }
-    
-      function enviarValor() {
-    
-        function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        }
-
-        console.log(document.cookie.match('usuario').input);
-
-        const imagemElement = document.getElementById('imagem');
-        const valorEscolhido = obterValorDaImagem(imagemElement.src);
-    
-        socket.emit("valorEscolhido", {'valorEscolhido':valorEscolhido,"usuario":getCookie('usuario'), 'agente':'retaguarda'});
-
-      }
-    
-      function obterValorDaImagem(src) {
-        const partesDaURL = src.split('/');
-        const nomeDaImagem = partesDaURL[partesDaURL.length - 1];
-        const valor = nomeDaImagem.replace(/\D/g, '');
-    
-        return valor;
-      }
-    
-      window.onload = function () {
-        gerarimagens();
-      };
+          0: 'https://i.ibb.co/c2YmsnR/Carro-2-removebg-preview.png',
+          1: 'https://i.ibb.co/Rg5z14d/Carro-4-removebg-preview.png',
+          2: 'https://i.ibb.co/tbk7JMY/Carro-5-removebg-preview.png',
+          3: 'https://i.ibb.co/34V72wH/Carro-7-removebg-preview.png',
+          4: 'https://i.ibb.co/dPh7MNs/Carro-8-removebg-preview.png',
+          5: 'https://i.ibb.co/94L98wb/Carro-2-6.png',
+          6: 'https://i.ibb.co/WfPgrPq/Carro-2-7.png',
+          7: 'https://i.ibb.co/mGD0FkJ/Carro-2-8.png',
+          8: 'https://i.ibb.co/TTmzMfh/Carro-2-9.png',
+          9: 'https://i.ibb.co/G5n0DQz/Carro-2-10.png',
+        };
       
     </script>
     
@@ -95,6 +60,35 @@
     </script>
 
     <script>
+
+      socket.on('imagens', (carros) => {
+        
+        console.log(carros);
+
+        function gerarimagens() {
+        const valores = (carros);
+        const indicealeatorio = Math.floor(Math.random() * valores.length);
+        const valorEscolhido = valores[indicealeatorio];
+        const imagemselecionada = imagens[valorEscolhido];
+    
+        const imagemElement = document.getElementById('imagem');
+        imagemElement.src = imagemselecionada;
+
+        function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        console.log(document.cookie.match('usuario').input);
+
+         socket.emit("valorEscolhido", {'valorEscolhido':valorEscolhido,"usuario":getCookie('usuario'), 'agente':'retaguarda'});
+    
+      }
+
+      gerarimagens();
+
+      });
 
       socket.on('vitoria', (escolhacorreta) => {
           console.log(escolhacorreta);

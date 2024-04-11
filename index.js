@@ -375,7 +375,6 @@ function remove_canal(canal){
     function Regressiva(){
         if (tempo) {
             tempo --
-            console.log(tempo)
 
             if (tempo == 0) {
                 clearInterval(tempo)
@@ -439,6 +438,18 @@ io.on('connection', (socket) => {
         socket.emit('DadosRecordes',(dados_Recordes));
     };
     Select_Recordes();
+  });
+
+  // troca de variaveis
+
+  socket.on('enviarimagens', (carros) => {
+
+    var pão = setInterval(() => {
+      
+      socket.broadcast.emit('imagens', (carros))
+      clearInterval(pão);
+      
+    }, 7000);
   });
 
   socket.on('escolhaUsuario', (escolhaUser) => {
@@ -538,7 +549,7 @@ io.on('connection', (socket) => {
         // Inicio data atual
         const currentDate = new Date();
         const day = String(currentDate.getDate()).padStart(2, '0');
-        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0');
         const year = currentDate.getFullYear();
         const hours = String(currentDate.getHours()).padStart(2, '0');
         const minutes = String(currentDate.getMinutes()).padStart(2, '0');
@@ -584,5 +595,5 @@ const NETWORK_IP = '0.0.0.0';
 const PORT = 5000;
 
 server.listen(PORT, NETWORK_IP, () => {
-  console.log(`Rodando em: http://172.32.2.159:${PORT}`);
+  console.log(`Rodando em: http://172.32.0.224:${PORT}`);
 });
