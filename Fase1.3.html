@@ -4,52 +4,28 @@
   <head>
     <title> Fase 1.3 </title>
     <link rel="web site icon" type="png" href="https://cdn-icons-png.flaticon.com/512/1/1837.png">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
     <!-- CSS Da Página -->
     <!---------------------------------->
     <style>
 
-      button {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        margin-left: 45%;
-        background: rgba(109, 106, 106, 0.137);
-        height: 10%;
-        width: 10%;
-        font-weight: bold;
-        padding: 6px 10px;
-        border-radius: 15px;
-      }
-     
-      body {
-        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
-        background-repeat: no-repeat;
-        background-size: 100vw 100vh;
-        overflow-y: auto;
+body {
+        background-color: #000000;
+        font-family: "Black Ops One", system-ui;
       }
       
       h1 {
         text-align: center;
-        color: rgb(255, 255, 255);
-        font-size:xx-large;
-        font-family: cursive;
+        color: #3dff00;
         margin-top: 50px;
-        text-shadow: 0px 0px 15px black;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #000;
+        font-size: 45px;
       }
       
       form {
-        text-align: center;
-        color: rgb(255, 255, 255);
-        max-height: 70vh;
-        overflow: auto;
-        backdrop-filter: blur(2px);
         margin: auto;
         display: flex;
         flex-direction: row;
-        width: 50%;
-        padding: 30px;
         flex-wrap: wrap;
         gap: 50px;
         align-content: center;
@@ -57,7 +33,7 @@
         align-items: center;
       }
   
-      #café {
+      #cafe {
         margin-bottom: auto;
         position: absolute;
       }
@@ -72,33 +48,31 @@
           width: 240px;
         }
       }
-  
-      input[type="radio"] {
-        appearance: none;
-        width: 140px;
-        height: 280px;
-        border-radius: 12px;
-        position: absolute;
-        z-index: -1;
-        background: transparent;
+      
+      #meuForm img {
+        width: 170px;
+        margin-top: 5%
       }
-  
-      input[type="radio"]:checked {
-        background: #00800099;
+
+      #meuForm img:hover{
+        cursor: pointer;
+        filter: drop-shadow( -2px 2px 10px #3dff00);
+        transform: scale(1.1);
+        transition: 600ms;
       }
   
       #meuForm img {
-        width: 140px;
+        width: 150px;
       }
 
       #Motorista1 {
         width: 140px;
-        height: 280px;
+        height: 345px;;
       }
 
       #Motorista2 {
         width: 140px;
-        height: 280px;
+        height: 360px;
       }
 
       </style>
@@ -165,34 +139,17 @@
     <br>
     <form id="meuForm">
 
-        <label>
-        <input type="radio" value="1" id="Opcao1" class="café" name="carros" >
-        <img src="https://i.ibb.co/M9J47QC/Motorista1.png" >
-        </label>
+        <img src="https://i.ibb.co/M9J47QC/Motorista1.png" value="1" id="Opcao1" class="café" name="carros">
+
+        <img src="https://i.ibb.co/2Khgy3g/Motorista2.png" value="2" id="Opcao2" class="café" name="carros">
         
-        <label>
-        <input type="radio" value="2" id="Opcao2" class="café" name="carros" > 
-        <img src="https://i.ibb.co/2Khgy3g/Motorista2.png" >
-        </label>
+        <img src="https://i.ibb.co/tJCMdn4/Motorista3.png" id="Motorista1" value="3" id="Opcao3" class="café" name="carros">
+      
+        <img src="https://i.ibb.co/mDv4nq3/Motorista4.png" id="Motorista2" value="4" id="Opcao4" class="café" name="carros">
 
-        <label>
-        <input type="radio" value="3" id="Opcao3" class="café" name="carros" > 
-        <img src="https://i.ibb.co/tJCMdn4/Motorista3.png" id="Motorista1">
-        </label>
-
-        <label>
-        <input type="radio" value="4" id="Opcao4" class="café" name="carros" >
-        <img src="https://i.ibb.co/mDv4nq3/Motorista4.png" id="Motorista2">
-        </label>
-
-        <label>
-        <input type="radio" value="5" id="Opcao5" class="café" name="carros" >
-        <img src="https://i.ibb.co/LZkYTFQ/Motorista5.png" >
-        </label>
-
+        <img src="https://i.ibb.co/LZkYTFQ/Motorista5.png" value="5" id="Opcao5" class="café" name="carros">
+        
     </form>
-
-    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
 
   </body>
 

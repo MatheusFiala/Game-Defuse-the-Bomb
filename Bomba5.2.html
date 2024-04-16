@@ -4,56 +4,37 @@
   <head>
     <title> Bomba 5 </title>
     <link rel="web site icon" type="png" href="https://cdn-icons-png.flaticon.com/512/1/1837.png">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
     <!-- CSS Da Página -->
     <!---------------------------------->
     <style>
 
-      button {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        margin-left: 45%;
-        background: rgba(109, 106, 106, 0.137);
-        height: 10%;
-        width: 10%;
-        font-weight: bold;
-        padding: 6px 10px;
-        border-radius: 15px;
-      }
-     
       body {
-        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
-        background-repeat: no-repeat;
-        background-size: 100vw 100vh;
-        overflow-y: auto;
+        background-color: #000000;
+        font-family: "Black Ops One", system-ui;
       }
       
       h1 {
         text-align: center;
-        color: rgb(255, 255, 255);
-        font-size:xx-large;
-        font-family: cursive;
+        color: #3dff00;
         margin-top: 50px;
-        text-shadow: 0px 0px 15px black;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #000;
+	      font-size: 35px;
       }
       
       form {
-        text-align: center;
-        color: rgb(255, 255, 255);
-        max-height: 70vh;
-        backdrop-filter: blur(3px);
         margin: auto;
         display: flex;
         flex-direction: row;
-        width: 100%;
-        padding: 0px;
-        flex-wrap: nowrap;
-        gap: 70px;
+        flex-wrap: wrap;
+        gap: 105px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: -1%;
       }
   
-      #café {
+      #cafe {
         margin-bottom: auto;
         position: absolute;
       }
@@ -68,25 +49,24 @@
           width: 240px;
         }
       }
-  
-      input[type="radio"] {
-        appearance: none;
-        width: 180px;
-        height: 350px;
-        margin-left: -140px;
-        margin-top: -40px;
-        border-radius: 12px;
-        position: absolute;
-        z-index: -1;
-        background: transparent;
-      }
-  
-      input[type="radio"]:checked {
-        background: #00800099;
-      }
-  
+      
       #meuForm img {
-        width: 150px;
+        width: 100px;
+      }
+
+      #meuForm img:hover{
+        cursor: pointer;
+        filter: drop-shadow( -2px 2px 10px #3dff00);
+        transform: scale(1.1);
+        transition: 600ms;
+      }
+
+      #bomba {
+        width: 20%;
+      }
+
+      #conteudo{
+        margin-top: 4%;
       }
 
       #circuito {
@@ -94,41 +74,8 @@
         margin-left: 40%;
       }
 
-      #Opcao1 {
-        width: 188px;
-        height: 330px;
-        margin-top: -40px;
-        margin-left: -20px;
-
-      }
-
-      #Opcao2 {
-        width: 188px;
-        height: 340px;
-        margin-top: -60px;
-        margin-left: -20px;
-
-      }
-
-      #Opcao3 {
-        width: 200px;
-        height: 340px;
-        margin-top: -63px;
-        margin-left: -27px;
-      }
-
-      #Opcao4 {
-        width: 195px;
-        height: 340px;
-        margin-top: -65px;
-        margin-left: -22px;
-      }
-
-      #Opcao5 {
-        width: 195px;
-        height: 340px;
-        margin-top: -58px;
-        margin-left: -22px;
+      .opcao{
+        display: grid;
       }
 
       </style>
@@ -191,44 +138,45 @@
 
      <!-- Código Html -->
      <!--------------------------------->
-    <h1> Siga as instruções do seu agente de retaguarda para desarmar a bomba.
-    </h1>
-    <img src= "https://i.ibb.co/YR7BRMH/Circuito.png"  id="circuito">
+    <h1> Siga as instruções do seu agente de retaguarda para desarmar a bomba. 
+
+  <div id="conteudo">
+
+    <img src= "https://i.ibb.co/YR7BRMH/Circuito.png"  id="bomba">
+
+  </h1>
+
     <form id="meuForm">
 
-        <label> Cortar o Fio azul a esquerda e depois o Fio azul a direita. <br>
-        <input type="radio" value="1" id="Opcao1" class="café" name="carros"> 
+      <div class="opcao">  
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
-        </label>
-        
-        <label> Cortar o Fio vermelho a direita e depois o Fio azul a direita. <br>
-        <input type="radio" value="2" id="Opcao2" class="café" name="carros"> 
+      </div>
+
+      <div class="opcao">  
         <img src = "https://i.ibb.co/SN73CDq/Fio2.png" >
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
-        </label>
-        
-        <label> Cortar o Fio vermelho a esquerda e depois o Fio azul a esquerda. <br>
-        <input type="radio" value="3" id="Opcao3" class="café" name="carros"> 
+      </div>
+
+      <div class="opcao">  
         <img src = "https://i.ibb.co/SN73CDq/Fio2.png" >
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
-        </label>
-        
-        <label> Cortar o Fio azul a esquerda e depois o Fio vermelho a direita. <br>
-        <input type="radio" value="4" id="Opcao4" class="café" name="carros"> 
+      </div>
+
+      <div class="opcao"> 
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
         <img src = "https://i.ibb.co/SN73CDq/Fio2.png" >
-        </label>
-        
-        <label> Cortar o Fio vermelho a esquerda e depois o Fio azul a direita. <br>
-        <input type="radio" value="5" id="Opcao5" class="café" name="carros"> 
+      </div>
+
+      <div class="opcao"> 
         <img src = "https://i.ibb.co/SN73CDq/Fio2.png" >
         <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
-        </label>
+      </div>
+
 
     </form>
 
-    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
+  </div>
 
   </body>
 

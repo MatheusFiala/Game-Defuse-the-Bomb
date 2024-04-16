@@ -4,52 +4,28 @@
   <head>
     <title> Fase 2.4 </title>
     <link rel="web site icon" type="png" href="https://cdn-icons-png.flaticon.com/512/1/1837.png">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
     <!-- CSS Da Página -->
     <!---------------------------------->
     <style>
 
-      button {
-        color: rgb(255, 255, 255);
-        text-align: center;
-        margin-left: 45%;
-        background: rgba(109, 106, 106, 0.137);
-        height: 10%;
-        width: 10%;
-        font-weight: bold;
-        padding: 6px 10px;
-        border-radius: 15px;
-      }
-     
-      body {
-        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
-        background-repeat: no-repeat;
-        background-size: 100vw 100vh;
-        overflow-y: auto;
+body {
+        background-color: #000000;
+        font-family: "Black Ops One", system-ui;
       }
       
       h1 {
         text-align: center;
-        color: rgb(255, 255, 255);
-        font-size:xx-large;
-        font-family: cursive;
+        color: #3dff00;
         margin-top: 50px;
-        text-shadow: 0px 0px 15px black;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #000;
+	      font-size: 32px;
       }
       
       form {
-        text-align: center;
-        color: rgb(255, 255, 255);
-        max-height: 70vh;
-        overflow: auto;
-        backdrop-filter: blur(3px);
         margin: auto;
         display: flex;
         flex-direction: row;
-        width: 100%;
-        padding: 30px;
         flex-wrap: wrap;
         gap: 50px;
         align-content: center;
@@ -57,7 +33,7 @@
         align-items: center;
       }
   
-      #café {
+      #cafe {
         margin-bottom: auto;
         position: absolute;
       }
@@ -72,26 +48,18 @@
           width: 240px;
         }
       }
-  
-      input[type="radio"] {
-        appearance: none;
-        width: 390px;
-        margin-top: -20px;
-        margin-left: -20px;
-        height: 240px;
-        border-radius: 12px;
-        position: absolute;
-        z-index: -1;
-        background: transparent;
-      }
-  
-      input[type="radio"]:checked {
-        background: #00800099;
-      }
-  
+      
       #meuForm img {
         width: 350px;
       }
+
+      #meuForm img:hover{
+        cursor: pointer;
+        filter: drop-shadow( -2px 2px 10px #3dff00);
+        transform: scale(1.1);
+        transition: 600ms;
+      }
+
       </style>
 
   </head>
@@ -158,34 +126,17 @@
     <br>
     <form id="meuForm">
 
-        <label>
-        <input type="radio" value="43" id="Opcao1" class="café" name="carros"> 
-        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-43.jpg">
-        </label>
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-43.jpg" value="43" id="Opcao1" class="café" name="carros">
         
-        <label>
-        <input type="radio" value="44" id="Opcao2" class="café" name="carros"> 
-        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-44.jpg" >
-        </label>
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-44.jpg" value="44" id="Opcao2" class="café" name="carros">
         
-        <label>
-        <input type="radio" value="42" id="Opcao3" class="café" name="carros"> 
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-42.jpg">
-        </label>
-        
-        <label>
-        <input type="radio" value="50" id="Opcao4" class="café" name="carros"> 
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-50.jpg">
-        </label>
-        
-        <label>
-        <input type="radio" value="19" id="Opcao5" class="café" name="carros"> 
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-19.jpg">
-        </label>
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-42.jpg" value="42" id="Opcao3" class="café" name="carros">
+       
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-50.jpg" value="50" id="Opcao4" class="café" name="carros">
+       
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-19.jpg" value="19" id="Opcao5" class="café" name="carros">
 
     </form>
-
-    <button onclick="EnviarEscolha()"> Enviar Escolha </button>
 
   </body>
 
