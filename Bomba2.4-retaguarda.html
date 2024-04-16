@@ -4,34 +4,35 @@
   <head>
     <title> Bomba 2 </title>
     <link rel="web site icon" type="png" href="https://cdn-icons-png.flaticon.com/512/8548/8548270.png ">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 
     <!-- CSS -->
     <!---------------------------------->
     <style>
       body {
-        background-image: url("https://get.wallhere.com/photo/powerplant-factory-blue-industrial-abandonded-forgotten-forbidden-machine-urban-exploring-decayed-fragiledecay-944999.jpg");
-        background-repeat: no-repeat;
-        background-size: 100vw 100vh;
-        overflow-y: auto;
+        background-color: #000000;
+        font-family: "Black Ops One", system-ui;
       }
 
       img#imagem {
-        height: 29%;
-        width: 29%;
-        margin-left: 36%;
+        height: 32%;
+        width: 32%;
+        margin-left: 34%;
+        cursor: pointer;
+        filter: drop-shadow(-2px -2px 20px #3dff00);
       }
 
       h1 {
         text-align: center;
-        color: rgb(255, 255, 255);
-        font-size: xx-large;
-        font-family: cursive;
+        color: #3dff00;
         margin-top: 50px;
-        text-shadow: 0px 0px 15px black;
-        -webkit-text-stroke-width: 1px;
-        -webkit-text-stroke-color: #000;
+        font-size: 38px;
       }
 
+      #imgEscolha{
+        width: 220px;
+        cursor: pointer;
+      }
     </style>
 
     <!-- JavaScript -->
@@ -117,8 +118,8 @@
       <br>
        Corte estes Fios seguindo a ordem abaixo. <br>
        <br>
-        <img src = "https://i.ibb.co/SN73CDq/Fio2.png" height="12%" width="12%" >
-        <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" height="12%" width="12%" >
+        <img src = "https://i.ibb.co/SN73CDq/Fio2.png" id="imgEscolha" >
+        <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" id="imgEscolha" >
     </h1>
     <br>
     <img id="imagem">
