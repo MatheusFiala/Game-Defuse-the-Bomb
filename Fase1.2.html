@@ -80,29 +80,38 @@
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
 
-      function EnviarEscolha() {
-    
-        var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
-
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
-
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
-
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
+        function escolhaUsuario1(){
+          var escolhaUsuario
+          escolhaUsuario = "1"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
         
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+        function escolhaUsuario2(){
+          var escolhaUsuario
+          escolhaUsuario = "2"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
+
+        function escolhaUsuario3(){
+          var escolhaUsuario
+          escolhaUsuario = "3"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
+
+        function escolhaUsuario4(){
+          var escolhaUsuario
+          escolhaUsuario = "4"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
+
+        function escolhaUsuario5(){
+          var escolhaUsuario
+          escolhaUsuario = "5"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
       console.log(document.cookie.match('usuario').input);
-
       
       socket.on('vitoria', (escolhacorreta) => {
           console.log(escolhacorreta);
@@ -125,15 +134,15 @@
 
   <form id="meuForm">
 
-      <img src = "https://i.ibb.co/HCYxtP6/Chave-1-removebg-preview.png" value="1" id="Opcao1" class="café" name="carros">
+      <img src = "https://i.ibb.co/HCYxtP6/Chave-1-removebg-preview.png" value="1" id="Opcao1" class="café" name="carros" onclick="escolhaUsuario1()">
     
-      <img src =  "https://i.ibb.co/ZMNmQdT/Chave-2-removebg-preview.png" value="2" id="Opcao2" class="café" name="carros">
+      <img src =  "https://i.ibb.co/ZMNmQdT/Chave-2-removebg-preview.png" value="2" id="Opcao2" class="café" name="carros" onclick="escolhaUsuario2()">
     
-      <img src = "https://i.ibb.co/thp76JP/Chave-3-removebg-preview.png" value="3" id="Opcao3" class="café" name="carros">
+      <img src = "https://i.ibb.co/thp76JP/Chave-3-removebg-preview.png" value="3" id="Opcao3" class="café" name="carros" onclick="escolhaUsuario3()">
 
-      <img src = "https://i.ibb.co/pQ8N3S3/Chave-4-removebg-preview.png" value="4" id="Opcao4" class="café" name="carros">
+      <img src = "https://i.ibb.co/pQ8N3S3/Chave-4-removebg-preview.png" value="4" id="Opcao4" class="café" name="carros" onclick="escolhaUsuario4()">
 
-      <img src =  "https://i.ibb.co/bvdqDNV/Chave-5-removebg-preview.png" value="5" id="Opcao5" class="café" name="carros">
+      <img src =  "https://i.ibb.co/bvdqDNV/Chave-5-removebg-preview.png" value="5" id="Opcao5" class="café" name="carros" onclick="escolhaUsuario5()">
      
   </form>
 
