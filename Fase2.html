@@ -81,26 +81,35 @@ body {
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
-        var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+      function escolhaUsuario1(){
+          var escolhaUsuario
+          escolhaUsuario = "1"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+        function escolhaUsuario2(){
+          var escolhaUsuario
+          escolhaUsuario = "2"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+        function escolhaUsuario3(){
+          var escolhaUsuario
+          escolhaUsuario = "3"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+        function escolhaUsuario4(){
+          var escolhaUsuario
+          escolhaUsuario = "4"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+        function escolhaUsuario5(){
+          var escolhaUsuario
+          escolhaUsuario = "5"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -127,15 +136,15 @@ body {
     <form id="meuForm">
 
       
-        <img src="https://i.ibb.co/NLMnnQM/Mapa-1.jpg" class="mapa" value="1" id="Opcao1" name="carros">
+        <img src="https://i.ibb.co/NLMnnQM/Mapa-1.jpg" class="mapa" value="1" id="Opcao1" name="carros" onclick="escolhaUsuario1()">
        
-        <img src="https://i.ibb.co/02MqHFW/Mapa-2.jpg" class="mapa" value="2" id="Opcao2" name="carros">
+        <img src="https://i.ibb.co/02MqHFW/Mapa-2.jpg" class="mapa" value="2" id="Opcao2" name="carros" onclick="escolhaUsuario2()">
         
-        <img src="https://i.ibb.co/Pt7LHMy/Mapa-3.jpg" class="mapa" value="3" id="Opcao3" name="carros">
+        <img src="https://i.ibb.co/Pt7LHMy/Mapa-3.jpg" class="mapa" value="3" id="Opcao3" name="carros" onclick="escolhaUsuario3()">
        
-        <img src="https://i.ibb.co/58QM164/Mapa-4.png" class="mapa" value="4" id="Opcao4" name="carros">
+        <img src="https://i.ibb.co/58QM164/Mapa-4.png" class="mapa" value="4" id="Opcao4" name="carros" onclick="escolhaUsuario4()">
        
-        <img src="https://i.ibb.co/gPxF3ZL/Mapa-5.jpg" class="mapa" value="5" id="Opcao5" name="carros">
+        <img src="https://i.ibb.co/gPxF3ZL/Mapa-5.jpg" class="mapa" value="5" id="Opcao5" name="carros" onclick="escolhaUsuario5()">
         
     </form>
 
