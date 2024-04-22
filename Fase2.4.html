@@ -81,26 +81,35 @@ body {
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
-        var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "43";} 
+      function escolhaUsuario1(){
+          var escolhaUsuario
+          escolhaUsuario = "1"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "44"; }
+        function escolhaUsuario2(){
+          var escolhaUsuario
+          escolhaUsuario = "2"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "42"; }
+        function escolhaUsuario3(){
+          var escolhaUsuario
+          escolhaUsuario = "3"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "50"; }
+        function escolhaUsuario4(){
+          var escolhaUsuario
+          escolhaUsuario = "4"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "19"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+        function escolhaUsuario5(){
+          var escolhaUsuario
+          escolhaUsuario = "5"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -126,15 +135,15 @@ body {
     <br>
     <form id="meuForm">
 
-        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-43.jpg" value="43" id="Opcao1" class="café" name="carros">
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-43.jpg" value="43" id="Opcao1" class="café" name="carros" onclick="escolhaUsuario1()">
         
-        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-44.jpg" value="44" id="Opcao2" class="café" name="carros">
+        <img src= "https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-44.jpg" value="44" id="Opcao2" class="café" name="carros" onclick="escolhaUsuario2()">
         
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-42.jpg" value="42" id="Opcao3" class="café" name="carros">
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-42.jpg" value="42" id="Opcao3" class="café" name="carros" onclick="escolhaUsuario3()">
        
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-50.jpg" value="50" id="Opcao4" class="café" name="carros">
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-50.jpg" value="50" id="Opcao4" class="café" name="carros" onclick="escolhaUsuario4()">
        
-        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-19.jpg" value="19" id="Opcao5" class="café" name="carros">
+        <img src="https://callofdutymaps.com/wp-content/uploads/Mauer-der-toten-19.jpg" value="19" id="Opcao5" class="café" name="carros" onclick="escolhaUsuario5()">
 
     </form>
 

@@ -31,6 +31,7 @@ body {
         align-content: center;
         justify-content: center;
         align-items: center;
+        margin-top: 3%;
       }
   
       #cafe {
@@ -60,38 +61,6 @@ body {
         transition: 600ms;
       }
 
-      #Opcao1 {
-        width: 250px;
-        height: 130px;
-        margin-left: 30px;
-        margin-top: -10px;
-      }
-
-      #Opcao2 {
-        width: 330px;
-        height: 230px;
-        margin-top: -10px;
-        margin-left: -10px;
-      }
-
-      #Opcao3 {
-        width: 300px;
-        height: 230px;
-      }
-
-      #Opcao4 {
-        height: 290px;
-        width: 210px;
-        margin-left: 48px;
-      }
-
-      #Opcao5 {
-        width: 350px;
-        height: 170px;
-       margin-left: -20px;
-        margin-top: -10px;
-      }
-
       </style>
 
   </head>
@@ -113,26 +82,35 @@ body {
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
-        var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+      function escolhaUsuario1(){
+          var escolhaUsuario
+          escolhaUsuario = "1"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+        function escolhaUsuario2(){
+          var escolhaUsuario
+          escolhaUsuario = "2"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+        function escolhaUsuario3(){
+          var escolhaUsuario
+          escolhaUsuario = "3"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+        function escolhaUsuario4(){
+          var escolhaUsuario
+          escolhaUsuario = "4"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+        function escolhaUsuario5(){
+          var escolhaUsuario
+          escolhaUsuario = "5"
+          socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'})
+        }
 
       
       socket.on('escolhaNum', (escolhacorreta) => {
@@ -170,15 +148,15 @@ body {
     <br>
     <form id="meuForm">
 
-        <img src= "https://i.ibb.co/N1gP36H/Bomba1.png" value="1" id="Opcao1" class="café" name="carros">
+        <img src= "https://i.ibb.co/N1gP36H/Bomba1.png" value="1" id="Opcao1" class="café" name="carros" onclick="escolhaUsuario1()">
         
-        <img src= "https://i.ibb.co/3FCqgYP/Bomba2.png" value="2" id="Opcao2" class="café" name="carros">
+        <img src= "https://i.ibb.co/3FCqgYP/Bomba2.png" value="2" id="Opcao2" class="café" name="carros" onclick="escolhaUsuario2()">
        
-        <img src="https://i.ibb.co/CJcPjH0/Bomba3.png" value="3" id="Opcao3" class="café" name="carros">
+        <img src="https://i.ibb.co/CJcPjH0/Bomba3.png" value="3" id="Opcao3" class="café" name="carros" onclick="escolhaUsuario3()">
         
-        <img src="https://i.ibb.co/3BCfpW2/Bomba4.png" value="4" id="Opcao4" class="café" name="carros">
+        <img src="https://i.ibb.co/3BCfpW2/Bomba4.png" value="4" id="Opcao4" class="café" name="carros" onclick="escolhaUsuario4()">
        
-        <img src="https://i.ibb.co/hF56dHY/Bomba5.png" value="5" id="Opcao5" class="café" name="carros">
+        <img src="https://i.ibb.co/hF56dHY/Bomba5.png" value="5" id="Opcao5" class="café" name="carros" onclick="escolhaUsuario5()">
 
     </form>
 
