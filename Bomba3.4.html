@@ -27,7 +27,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 90px;
+        gap: 60px;
         align-content: center;
         justify-content: center;
         align-items: center;
@@ -52,12 +52,12 @@
       
      
 
-      #meuForm img:hover{
+      /* #meuForm img:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
-      }
+      } */
 
       #bomba{
         width: 0%;
@@ -74,6 +74,14 @@
 
       .opcao{
         display: grid;
+        transition: 600ms;
+      }
+
+      .opcao:hover{
+        cursor: pointer;
+        background-color: #3cff0059;
+        border-radius: 20px;
+        transform: scale(1.1);
       }
 
     </style>
@@ -97,26 +105,35 @@
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao3").checked) {
-          escolhaUsuario = "3";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao1").checked) {
-            escolhaUsuario = "1"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -144,31 +161,31 @@
     
       <form id="meuForm">
   
-        <div class="opcao">
+        <div class="opcao" onclick="enviarEscolha3()">
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios"  >
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios"  >
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" >
         </div>
 
-        <div class="opcao">   
+        <div class="opcao" onclick="enviarEscolha2()">   
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios"  >
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" >
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios"  >
         </div>
 
-        <div class="opcao">   
+        <div class="opcao" onclick="enviarEscolha1()">   
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" >
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios"  >
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios"  >
         </div>
 
-        <div class="opcao">   
+        <div class="opcao" onclick="enviarEscolha4()">   
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" >
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios"  >
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios"  >
         </div>
 
-        <div class="opcao">   
+        <div class="opcao" onclick="enviarEscolha5()">   
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios"  >
           <img src = "https://i.ibb.co/rmpPmY3/Fio-Branco.png" class="fios" >
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios" >

@@ -126,26 +126,35 @@
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -174,15 +183,15 @@
       <br>
       <form id="meuForm"> 
 
-          <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios">
+          <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios" onclick="enviarEscolha1()">
         
-          <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios">
+          <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios" onclick="enviarEscolha2()">
         
-          <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios">
+          <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios" onclick="enviarEscolha3()">
         
-          <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png"  class="botões">
+          <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png"  class="botões" onclick="enviarEscolha4()">
         
-          <img src = "https://i.ibb.co/P1NvFr0/seta-Baixo-1.png" class="botões">
+          <img src = "https://i.ibb.co/P1NvFr0/seta-Baixo-1.png" class="botões" onclick="enviarEscolha5()">
 
       </div>
 

@@ -90,26 +90,35 @@
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao3").checked) {
-          escolhaUsuario = "3";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao1").checked) {
-            escolhaUsuario = "1"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -136,15 +145,15 @@
     </h1>
     <form id="meuForm">
 
-        <img src = "https://i.ibb.co/phycDHY/botao-Verde.png" >
-        
-        <img src = "https://i.ibb.co/phycDHY/botao-Verde.png" >
+        <img src = "https://i.ibb.co/phycDHY/botao-Verde.png" onclick="enviarEscolha1()">
        
-        <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" >
+        <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha2()">
        
-        <img src = "https://i.ibb.co/gZ2pqQp/botao-Amarelo.png" >
+        <img src = "https://i.ibb.co/gZ2pqQp/botao-Amarelo.png" onclick="enviarEscolha4()">
+
+        <img src = "https://i.ibb.co/phycDHY/botao-Verde.png" onclick="enviarEscolha3()">
       
-        <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" >
+        <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha5()">
 
     </form>
 

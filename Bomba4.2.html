@@ -51,14 +51,13 @@ body {
       }
       
       #meuForm img {
-        width: 65px;
+        width: 75px;
       }
 
-      #meuForm img:hover{
+      .opcao:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
-        transition: 600ms;
       }
 
       #bomba{
@@ -67,6 +66,7 @@ body {
 
       .opcao{
         display: grid;
+        transition: 600ms;
       }
 
       </style>
@@ -90,27 +90,35 @@ body {
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao5").checked) {
-          escolhaUsuario = "5";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao1").checked) {
-            escolhaUsuario = "1"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -139,7 +147,7 @@ body {
     
       <form id="meuForm">
 
-        <div class="opcao">  
+        <div class="opcao" onclick="enviarEscolha1()">  
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
           <img src = "https://i.ibb.co/XsMzWDt/B-3.png">
           <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png">
@@ -148,7 +156,7 @@ body {
           <img src = "https://i.ibb.co/SyW834j/B-4.png">
         </div>
 
-        <div class="opcao">
+        <div class="opcao" onclick="enviarEscolha2()">
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
           <img src = "https://i.ibb.co/XsMzWDt/B-3.png">
           <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png">
@@ -157,7 +165,7 @@ body {
           <img src = "https://i.ibb.co/ssf5t3p/B-5.png">
         </div>
 
-        <div class="opcao"> 
+        <div class="opcao" onclick="enviarEscolha4()"> 
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
           <img src = "https://i.ibb.co/XsMzWDt/B-3.png">
           <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png">
@@ -166,7 +174,7 @@ body {
           <img src = "https://i.ibb.co/SyW834j/B-4.png">
         </div>
 
-        <div class="opcao">
+        <div class="opcao" onclick="enviarEscolha3()">
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
           <img src = "https://i.ibb.co/XsMzWDt/B-3.png">
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
@@ -175,7 +183,7 @@ body {
           <img src = "https://i.ibb.co/SyW834j/B-4.png">
         </div>
 
-        <div class="opcao"> 
+        <div class="opcao" onclick="enviarEscolha5()"> 
           <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png">
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">
           <img src = "https://i.ibb.co/yFQ41Pq/B-2.png">

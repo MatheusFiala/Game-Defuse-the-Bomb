@@ -57,7 +57,7 @@ body {
       }
 
       .fios{
-        width: 190px;
+        width: 180px;
         height: 130px;
       }
 
@@ -94,27 +94,35 @@ body {
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -143,27 +151,27 @@ body {
       <br>
       <form id="meuForm">
 
-        <div class="format">
+        <div class="format" onclick="enviarEscolha1()">
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios">
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios">
         </div>
         
-        <div class="format">
+        <div class="format" onclick="enviarEscolha2()">
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios">
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios">
         
         </div>
 
-        <div class="format">
+        <div class="format" onclick="enviarEscolha3()">
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios">
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios">
         </div>
         
-        <div class="format">
+        <div class="format" onclick="enviarEscolha4()">
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios">
         </div>
 
-        <div class="format">
+        <div class="format" onclick="enviarEscolha5()">
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios">
         </div>
 

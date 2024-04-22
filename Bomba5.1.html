@@ -27,7 +27,7 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 115px;
+        gap: 90px;
         align-content: center;
         justify-content: center;
         align-items: center;
@@ -51,7 +51,7 @@
       }
       
       #meuForm img {
-        width: 100px;
+        width: 150px;
       }
 
       #meuForm img:hover{
@@ -66,7 +66,7 @@
       }
 
       #conteudo{
-        margin-top: 8%;
+        margin-top: 4%;
       }
 
       </style>
@@ -90,28 +90,35 @@
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-
-
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -140,15 +147,15 @@
       <br>
       <form id="meuForm">
 
-          <img src = "https://i.ibb.co/k6s2n4T/P1.png">
+          <img src = "https://i.ibb.co/k6s2n4T/P1.png" onclick="enviarEscolha1()">
         
-          <img src = "https://i.ibb.co/qNs7bwZ/P2.png">
+          <img src = "https://i.ibb.co/qNs7bwZ/P2.png" onclick="enviarEscolha2()">
         
-          <img src = "https://i.ibb.co/mqJNpp1/P3.png" >
+          <img src = "https://i.ibb.co/mqJNpp1/P3.png"  onclick="enviarEscolha3()">
           
-          <img src = "https://i.ibb.co/7GKjqDy/P4.png">
+          <img src = "https://i.ibb.co/7GKjqDy/P4.png" onclick="enviarEscolha4()">
         
-          <img src = "https://i.ibb.co/2ch4Lfv/P5.png">
+          <img src = "https://i.ibb.co/2ch4Lfv/P5.png" onclick="enviarEscolha5()">
 
       </form>
 

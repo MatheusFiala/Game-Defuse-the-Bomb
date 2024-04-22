@@ -43,10 +43,6 @@ body {
           width: 240px;
         }
       }
-      
-      #meuForm img {
-        width: 70px;
-      }
 
       .format :hover{
         cursor: pointer;
@@ -61,6 +57,10 @@ body {
 
       #conteudo{
         margin-top: 2%;
+      }
+
+      .cafe{
+        height:280px;
       }
       </style>
 
@@ -83,27 +83,35 @@ body {
         if (parts.length === 2) return parts.pop().split(';').shift();
       }
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "4"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "5"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -132,48 +140,23 @@ body {
     <form id="meuForm">
 
       <div class="format">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/XsMzWDt/B-3.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/SyW834j/B-4.png" class="café" name="carros">
+          <img src = "https://i.ibb.co/MZn5vgj/sequ-ncia1.png" class="cafe" name="carros" onclick="enviarEscolha1()">
       </div>
 
       <div class="format">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/XsMzWDt/B-3.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
+          <img src = "https://i.ibb.co/nmLnjk7/sequ-ncia2.png" class="cafe" name="carros" onclick="enviarEscolha2()">
       </div>
 
       <div class="format">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/XsMzWDt/B-3.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/SyW834j/B-4.png" class="café" name="carros">
+          <img src = "https://i.ibb.co/2qkygVH/sequ-ncia3.png" class="cafe" name="carros" onclick="enviarEscolha3()">
       </div>
 
       <div class="format">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/XsMzWDt/B-3.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/SyW834j/B-4.png" class="café" name="carros">
+          <img src = "https://i.ibb.co/HG3Whfq/sequ-ncia4.png" class="cafe" name="carros" onclick="enviarEscolha4()">
       </div>
       
       <div class="format">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/ssf5t3p/B-5.png" class="café" name="carros">
-          <img src = "https://i.ibb.co/SyW834j/B-4.png" class="café" name="carros">
+          <img src = "https://i.ibb.co/41C8XkK/sequ-ncia5.png" class="cafe" name="carros" onclick="enviarEscolha5()">
       </div>
 
     </form>

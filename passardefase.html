@@ -46,7 +46,7 @@
       }
       
       #meuForm img {
-        width: 238px;
+        width: 240px;
       }
 
       #meuForm img:hover{
@@ -57,7 +57,7 @@
       }
 
       #conteudo{
-        margin-top: 7%;
+        margin-top: 5%;
       }
       
       </style>
@@ -81,26 +81,35 @@
 
       var socket = io();
 
-      function EnviarEscolha() {
-    
+      function enviarEscolha1() {
         var escolhaUsuario;
-        if (document.getElementById("Opcao1").checked) {
-          escolhaUsuario = "1";} 
+        escolhaUsuario = "1";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao2").checked) {
-            escolhaUsuario = "2"; }
+      function enviarEscolha2() {
+        var escolhaUsuario;
+        escolhaUsuario = "2";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao3").checked) {
-            escolhaUsuario = "3"; }
+      function enviarEscolha3() {
+        var escolhaUsuario;
+        escolhaUsuario = "3";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao4").checked) {
-            escolhaUsuario = "14"; }
+      function enviarEscolha4() {
+        var escolhaUsuario;
+        escolhaUsuario = "4";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
-        else if (document.getElementById("Opcao5").checked) {
-            escolhaUsuario = "55"; }
-        
-            socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
-      };
+      function enviarEscolha5() {
+        var escolhaUsuario;
+        escolhaUsuario = "5";
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+      }
 
       
       socket.on('vitoria', (escolhacorreta) => {
@@ -120,22 +129,21 @@
 
      <!-- Código Html -->
      <!--------------------------------->
-    <h1> Infelizmente seu veículo estragou e você precisará escolher outro meio de transporte,
-      pergunte ao seu agente de Retaguarda qual o meio de transporte mais rápido.
+    <h1> Infelizmente seu veículo estragou e você precisará escolher veículo para continuar seu caminho até a bomba.
     </h1>
     <div id="conteudo">
     <form id="meuForm">
 
         
-        <img src="https://i.ibb.co/q0WTbT3/moto1.png" >
+        <img src="https://i.ibb.co/q0WTbT3/moto1.png" onclick="enviarEscolha1()">
      
-        <img src="https://i.ibb.co/413kKhK/moto2.png" >
+        <img src="https://i.ibb.co/413kKhK/moto2.png" onclick="enviarEscolha2()">
         
-        <img src="https://i.ibb.co/bzqYKGT/moto3.png" >
+        <img src="https://i.ibb.co/bzqYKGT/moto3.png" onclick="enviarEscolha3()">
         
-        <img src="https://i.ibb.co/vd9ZbFN/moto4.png" >
+        <img src="https://i.ibb.co/vd9ZbFN/moto4.png" onclick="enviarEscolha4()">
        
-        <img src="https://i.ibb.co/ZYfDpwD/moto5.png" >
+        <img src="https://i.ibb.co/ZYfDpwD/moto5.png" onclick="enviarEscolha5()">
 
     </form>
 
