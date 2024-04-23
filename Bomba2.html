@@ -49,21 +49,28 @@
         }
       }
     
-      #meuForm img:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
+      }
+
+      p{
+        cursor: pointer;
       }
 
       .botões {
         width: -10px;
         height: 90px;
+        cursor: pointer;
       }
 
       .fios{
         width: 190px;
         height: 130px;
+        cursor: pointer;
       }
 
       #conteudo{
@@ -72,6 +79,12 @@
 
       #bomba{
         width: 30%;
+      }
+
+      .opcoes{
+        text-align: center;
+        display: grid;
+        color: #dfdfdf;
       }
 
       </style>
@@ -151,16 +164,41 @@
       <br>
       <form id="meuForm">
 
-          
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio junto dos outros</p>
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios" onclick="enviarEscolha1()">
-        
-          <img src = "https://i.ibb.co/hVZG0hS/botao-Preto.png" class="botões" onclick="enviarEscolha4()">
-      
-          <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios" onclick="enviarEscolha3()">
+          </label>
+         </div>
 
+           <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
+          <img src = "https://i.ibb.co/hVZG0hS/botao-Preto.png" class="botões" onclick="enviarEscolha4()">
+          </label>
+         </div>
+
+         <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
+          <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios" onclick="enviarEscolha3()">
+          </label>
+         </div>
+
+         <div class="opcoes">
+          <label>
+            <p>Cortar este fio longe dos outros</p>
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios" onclick="enviarEscolha2()">
-          
+          </label>
+         </div>
+
+             <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" class="botões"onclick="enviarEscolha5()">
+          </label>
+         </div>
+
 
       </form>
 

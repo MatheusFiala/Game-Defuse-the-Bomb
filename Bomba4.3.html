@@ -31,7 +31,6 @@
         align-content: center;
         justify-content: center;
         align-items: center;
-        margin-top: 4%;
       }
   
       #cafe {
@@ -52,12 +51,19 @@
       
       #meuForm img {
         width: 100px;
+        cursor: pointer;
       }
 
-      .opcao:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
+        transition: 600ms;
+        color: #3dff00;
+      }
+
+      p{
+        cursor: pointer;
       }
 
       #bomba{
@@ -71,6 +77,12 @@
       .opcao{
         display: grid;
         transition: 600ms;
+        justify-items: center
+      }
+
+      .opcoes{
+        text-align: center;
+        color: #dfdfdf;
       }
 
       </style>
@@ -151,29 +163,54 @@
       
         <form id="meuForm">
 
+           <div class="opcoes">
+          <label>
+          <p>Pressionar estes botões</p>
           <div class="opcao" onclick="enviarEscolha1()">  
             <img src = "https://i.ibb.co/XsMzWDt/B-3.png">
             <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png">
           </div>
+          </label>
+          </div>
 
+           <div class="opcoes">
+          <label>
+          <p>Pressionar estes botões</p>
           <div class="opcao" onclick="enviarEscolha2()">
             <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png">
             <img src = "https://i.ibb.co/ssf5t3p/B-5.png">
           </div>
+          </label>
+          </div>
 
+           <div class="opcoes">
+          <label>
+          <p>Pressionar estes botões</p>
           <div class="opcao" onclick="enviarEscolha3()">
             <img src = "https://i.ibb.co/dJPw8gF/Bot-o-D.png">
             <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png">
           </div>
+          </label>
+          </div>
 
+           <div class="opcoes">
+          <label>
+          <p>Pressionar estes botões</p>
           <div class="opcao" onclick="enviarEscolha5()">  
             <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png">
             <img src = "https://i.ibb.co/yWLt6rb/Bot-o-S.png">
           </div>
+          </label>
+          </div>
 
+           <div class="opcoes">
+          <label>
+          <p>Pressionar estes botões</p>
           <div class="opcao" onclick="enviarEscolha4()">
             <img src = "https://i.ibb.co/yWLt6rb/Bot-o-S.png">
             <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png">
+          </div>
+          </label>
           </div>
 
         </form>

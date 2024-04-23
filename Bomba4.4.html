@@ -51,25 +51,38 @@
       
       #meuForm img {
         width: 130px;
+        cursor: pointer;
       }
 
-      .opcao:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
+        transition: 600ms;
+        color: #3dff00;
+      }
+
+      p{
+        cursor: pointer;
       }
 
       .opcao{
         display: grid;
         transition: 600ms;
+        justify-items: center
       }
 
       #bomba{
-        width: 20%;
+        width: 0%;
       }
 
       #conteudo{
         margin-top: 1%;
+      }
+
+      .opcoes{
+        text-align: center;
+        color: #dfdfdf;
       }
 
     </style>
@@ -146,35 +159,60 @@
       </h1>
       <form id="meuForm">
 
+        <div class="opcoes">
+          <label>
+          <p>Cortar estes fios</p>
         <div class="opcao" onclick="enviarEscolha1()"> 
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png">
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png">
           <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
-        </div>            
+        </div>
+       </label>
+       </div>            
 
+        <div class="opcoes">
+          <label>
+          <p>Cortar estes fios</p>
         <div class="opcao" onclick="enviarEscolha2()">  
           <img src = "https://i.ibb.co/rmpPmY3/Fio-Branco.png">
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png">
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" >
         </div>
+        </label>
+       </div>
 
+        <div class="opcoes">
+          <label>
+          <p>Cortar estes fios</p>
         <div class="opcao" onclick="enviarEscolha3()">  
           <img src = "https://i.ibb.co/rmpPmY3/Fio-Branco.png">
           <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png">
         </div>
+       </label>
+       </div>
 
+        <div class="opcoes">
+          <label>
+          <p>Cortar estes fios</p>
         <div class="opcao" onclick="enviarEscolha4()"> 
           <img src = "https://i.ibb.co/rmpPmY3/Fio-Branco.png">
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png">
           <img src = "https://i.ibb.co/yh3PnBG/Fio4.png">
         </div>
+       </label>
+       </div>
 
+        <div class="opcoes">
+          <label>
+          <p>Cortar estes fios</p>
         <div class="opcao" onclick="enviarEscolha5()">  
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png">
           <img src = "https://i.ibb.co/rmpPmY3/Fio-Branco.png">
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png">
         </div>
+        </label>
+       </div>
 
       </form>
 

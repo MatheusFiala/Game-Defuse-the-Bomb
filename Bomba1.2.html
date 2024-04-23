@@ -13,6 +13,7 @@
 body {
         background-color: #000000;
         font-family: "Black Ops One", system-ui;
+        color: #3dff00;
       }
       
       h1 {
@@ -50,60 +51,41 @@ body {
         }
       }
 
-      #meuForm img:hover{
+      .opcoes{
+        color: #dfdfdf;
+      }
+
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
       }
 
-      #Opcao1 {
-        width: 200px;
-        height: 170px;
-        margin-left: -150px;
-        margin-top: -20px;
-      }
-
-      #Opcao2 {
-        width: 160px;
-        height: 180px;
-        margin-left: -150px;
-        margin-top: -20px;
-      }
-
-      #Opcao3 {
-        width: 200px;
-        height: 160px;
-        margin-left: -150px;
-        margin-top: -20px;
-      }
-
-      #Opcao4 {
-        width: 141px;
-        height: 180px;
-        margin-left: -142px;
-        margin-top: -20px;
-      }
-
-      #Opcao5 {
-        width: 200px;
-        height: 170px;
-        margin-left: -170px;
-        margin-top: -20px;
+      p{
+        cursor: pointer;
       }
 
       .botões {
         width: -10px;
         height: 120px;
+        cursor: pointer;
       }
 
       .fios{
         width: 190px;
         height: 130px;
+        cursor: pointer;
       }
 
       #conteudo{
         margin-top: 4%;
+      }
+
+      .opcoes{
+        text-align: center;
+        display: grid;
       }
 
       </style>
@@ -182,15 +164,40 @@ body {
     </h1>
     <form id="meuForm">
 
+      <div class="opcoes">
+      <label>
+        <p>Cortar este fio</p>
         <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios" onclick="enviarEscolha1()">
+      </label>
+      </div>
         
+      <div class="opcoes">
+      <label>
+        <p>Pressionar este botão</p>
         <img src = "https://i.ibb.co/P1NvFr0/seta-Baixo-1.png" class="botões" onclick="enviarEscolha2()">
-        
+      </label>
+      </div>
+
+      <div class="opcoes">
+        <label>
+          <p>Cortar este fio</p>
         <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios" onclick="enviarEscolha3()">
-        
+        </label>
+      </div>
+
+      <div class="opcoes">
+        <label>
+          <p>Pressionar este botão</p>
         <img src = "https://i.ibb.co/Jr2Q8g7/Bot-o3.png" class="botões" onclick="enviarEscolha4()">
-        
+        </label>
+      </div>
+
+      <div class="opcoes">
+        <label>
+          <p>Cortar este fio</p>
         <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios" onclick="enviarEscolha5()">
+        </label>
+      </div>
 
     </div>
 

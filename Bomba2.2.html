@@ -19,9 +19,15 @@
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-	        font-size: 37px;
+	      font-size: 37px;
       }
       
+
+      #meuForm img {
+        width: 160px;
+        cursor: pointer;
+      }
+
       form {
         margin: auto;
         display: flex;
@@ -38,27 +44,22 @@
         position: absolute;
       }
   
-      .imagens {
-        width: 240px;
-        cursor: pointer;
-      }
-  
       @media only screen and (max-width: 700px) {
         .imagens {
           width: 240px;
         }
       }
 
-      #meuForm img:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
       }
 
-      .fios{
-        width: 190px;
-        height: 130px;
+      p{
+        cursor: pointer;
       }
 
       #conteudo{
@@ -67,6 +68,13 @@
 
       #bomba{
         width: 30%;
+        
+      }
+      
+      .opcoes{
+        text-align: center;
+        display: grid;
+        color: #dfdfdf;
       }
 
       </style>
@@ -146,16 +154,41 @@
       <br>
       <form id="meuForm">
 
-          
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios" onclick="enviarEscolha1()">
-          
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" onclick="enviarEscolha2()">
-        
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Não cortar este fio</p>
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" onclick="enviarEscolha3()">
-      
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Não cortar este fio</p>
           <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" class="fios" onclick="enviarEscolha4()">
-          
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
           <img src = "https://i.ibb.co/SN73CDq/Fio2.png" class="fios" onclick="enviarEscolha5()">
+            </label>
+          </div>
+
  
 
       </form>

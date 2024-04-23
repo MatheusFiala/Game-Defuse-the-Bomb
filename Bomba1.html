@@ -49,42 +49,16 @@
         }
       }
 
-      #meuForm img:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
       }
 
-      #Opcao1 {
-        width: 220px;
-        height: 140px;
-        margin-left: -80px;
-      }
-
-      #Opcao2 {
-        width: 160px;
-        height: 150px;
-        margin-left: -50px;
-      }
-
-      #Opcao3 {
-        width: 268px;
-        height: 120px;
-        margin-left: -105px;
-      }
-
-      #Opcao4 {
-        width: 150px;
-        height: 180px;
-        margin-left: -47px;
-        margin-top: -30px;
-      }
-
-      #Opcao5 {
-        width: 210px;
-        height: 130px;
-        margin-left: -77px;
+      p{
+        cursor: pointer;
       }
 
       #conteudo {
@@ -94,11 +68,19 @@
       .botões {
         width: -10px;
         height: 90px;
+        cursor: pointer;
       }
 
       #botao {
         width: -10px;
         height: 150px;
+        cursor: pointer;
+      }
+
+      .opcoes{
+        text-align: center;
+        display: grid;
+        color: #dfdfdf;
       }
 
       </style>
@@ -176,16 +158,41 @@
       </h1>
       <br>
       <form id="meuForm">
-
+      
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png" class="botões" onclick="enviarEscolha5()">
-          
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/P1NvFr0/seta-Baixo-1.png" class="botões" onclick="enviarEscolha2()">
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
+          <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png" class="botões" onclick="enviarEscolha3()">  </label>
+          </div>
+
           
-          <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png" class="botões" onclick="enviarEscolha3()">    
-          
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/Jr2Q8g7/Bot-o3.png" id="botao" onclick="enviarEscolha4()">
-        
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png" class="botões" onclick="enviarEscolha1()">
+            </label>
+          </div>
 
     </div>
 

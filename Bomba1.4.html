@@ -49,60 +49,38 @@
         }
       }
 
-      #meuForm img:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
       }
 
-      #Opcao1 {
-        width: 190px;
-        height: 160px;
-        margin-left: -150px;
-        margin-top: -10px;
-      }
-
-      #Opcao2 {
-        width: 200px;
-        height: 150px;
-        margin-left: -150px;
-        margin-top: -10px;
-      }
-
-      #Opcao3 {
-        width: 200px;
-        height: 150px;
-        margin-left: -170px;
-        margin-top: -20px;
-      }
-
-      #Opcao4 {
-        width: 160px;
-        height: 160px;
-        margin-left: -150px;
-        margin-top: -30px;
-      }
-
-      #Opcao5 {
-        width: 160px;
-        height: 160px;
-        margin-left: -150px;
-        margin-top: -30px;
+      p{
+        cursor: pointer;
       }
 
       .botões {
         width: 90px;
         height: 90px;
+        cursor: pointer;
       }
 
       .fios{
         width: 190px;
         height: 130px;
+        cursor: pointer;
       }
 
       #conteudo{
         margin-top: 4%;
+      }
+
+      .opcoes{
+        text-align: center;
+        display: grid;
+        color: #dfdfdf;
       }
 
       </style>
@@ -183,15 +161,40 @@
       <br>
       <form id="meuForm"> 
 
+          <div class="opcoes">
+          <label>
+            <p>Cortar esse fio</p>
           <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios" onclick="enviarEscolha1()">
-        
+          </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
           <img src = "https://i.ibb.co/jWZ4d6v/Fio-Amarelo.png" class="fios" onclick="enviarEscolha2()">
-        
+          </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Não cortar este fio</p>
           <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" class="fios" onclick="enviarEscolha3()">
-        
+          </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/xXk1ZL1/seta-Cima-1.png"  class="botões" onclick="enviarEscolha4()">
-        
+          </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão</p>
           <img src = "https://i.ibb.co/P1NvFr0/seta-Baixo-1.png" class="botões" onclick="enviarEscolha5()">
+          </label>
+          </div>
 
       </div>
 

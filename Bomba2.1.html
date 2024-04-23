@@ -27,7 +27,6 @@
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 50px;
         align-content: center;
         justify-content: center;
         align-items: center;
@@ -50,14 +49,20 @@
       }
 
       #meuForm img{
-        width: 10%;
+        width: 100%;
+        cursor: pointer;
       }
 
-      #meuForm img:hover{
+      .opcoes:hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+        color: #3dff00;
+      }
+
+      p{
+        cursor: pointer;
       }
 
 
@@ -72,6 +77,13 @@
 
       #bomba{
         width: 30%;
+      }
+
+      .opcoes{
+        text-align: center;
+        display: grid;
+        color: #dfdfdf;
+        width: 10%;
       }
 
       </style>
@@ -152,15 +164,40 @@
       <br>
       <form id="meuForm">
 
+         <div class="opcoes">
+          <label>
+            <p>Pressionar este botão por dois segundos</p>
           <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha1()">
-          
-          <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha2()">
+            </label>
+          </div>
 
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão duas vezes por dois segundos</p>
+          <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha2()">
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão duas vezes</p>
           <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" onclick="enviarEscolha3()">
-          
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Pressionar este botão por dois segundos duas vezes</p>
           <img src = "https://i.ibb.co/hVZG0hS/botao-Preto.png" onclick="enviarEscolha4()">
-          
+            </label>
+          </div>
+
+          <div class="opcoes">
+          <label>
+            <p>Cortar este fio</p>
           <img src = "https://i.ibb.co/M8pk2v7/Fio1.png" class="fios" onclick="enviarEscolha5()">
+            </label>
+          </div>
 
         </form>
 
