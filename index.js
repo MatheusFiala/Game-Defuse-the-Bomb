@@ -319,6 +319,10 @@ app.get('/Bomba5.4-retaguarda.html', (req, res) => {
   res.sendFile(__dirname + '/Bomba5.4-retaguarda.html');
 });
 
+app.get('/loading.html', (req, res) => {
+  res.sendFile(__dirname + '/loading.html');
+});
+
 app.get('/css/style.css', (req, res) => {
   res.sendFile(__dirname + '/css/style.css');
 });
@@ -383,6 +387,10 @@ function remove_canal(canal){
     }
 
   // Setup da parte de Sockets
+  
+
+salasCriadas = []
+
 
 io.on('connection', (socket) => {
   console.log(`[${socket.id}] Usuário_Conectado`);
@@ -397,24 +405,25 @@ io.on('connection', (socket) => {
     io.emit('atualizarListaUsuarios', Object.keys(usuários));
   });
 
+  async function Select_Salas() {
+
+    const { Pool } = require('pg');
+      const pool = new Pool({
+          connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+      });
+   
+      const client = await pool.connect();
+      console.log("Criou pool de conexões no PostgreSQL!");
+
+      const Salas = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
+      console.log('Select feito com sucesso');
+      var dados_salas = (Salas.rows);
+      console.log(dados_salas);
+      salasCriadas = dados_salas
+      socket.emit('DadosSalas',(dados_salas));
+  };
+
   socket.on('solicitardados', (i) => {
-
-    async function Select_Salas() {
-
-      const { Pool } = require('pg');
-        const pool = new Pool({
-            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
-        });
-     
-        const client = await pool.connect();
-        console.log("Criou pool de conexões no PostgreSQL!");
-  
-        const Salas = await client.query('SELECT * FROM testes_praticos."Salas_Criadas"');
-        console.log('Select feito com sucesso');
-        var dados_salas = (Salas.rows);
-        console.log(dados_salas);
-        socket.emit('DadosSalas',(dados_salas));
-    };
     Select_Salas();
   });
 
@@ -499,12 +508,18 @@ io.on('connection', (socket) => {
   });
 
   socket.on('criarSala', (nomeDaSala) => {
-    canais[nomeDaSala] = {
+
+    console.log("TESTE CRIACAO");
+    console.log(nomeDaSala);
+    
+    canais[nomeDaSala.nome] = {
       'escolha':0,
     }
     
-    socket.join(nomeDaSala);
+    Select_Salas()
+    socket.join(nomeDaSala.id); // probraly this is not functional 
   });
+
 
   socket.on('enviar', (enviar) => {
 
@@ -523,13 +538,14 @@ io.on('connection', (socket) => {
         var dados_salas = (Salas.rows);
         console.log(dados_salas);
         socket.emit('Dados das Salas', dados_salas);
+        salasCriadas = dados_salas
     }
     Select();
   });
 
   socket.on('nome', (usuarioEscolhido) => {
     var nomes = usuarioEscolhido;
-    
+    console.log(usuarioEscolhido);
     // conexão com banco de dados
     
     async function connect() {
@@ -558,7 +574,9 @@ io.on('connection', (socket) => {
         const formattedDate = `${day}/${month}/${year} | ${hours}:${minutes}:${seconds}`;
         // Fim data atual
 
-        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,'1/2', formattedDate]);
+        var jogadores = 1
+
+        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,jogadores, formattedDate]);
         console.log('Adicionado com sucesso');
     
         // client.release();
@@ -567,6 +585,60 @@ io.on('connection', (socket) => {
         // return pool.connect();
     }
     connect();
+  });
+
+  socket.on('atualizar', (Id) => {
+
+    async function atualizar() {
+
+      Id
+
+      const { Pool } = require('pg');
+        const pool = new Pool({
+            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+        });
+     
+        const client = await pool.connect();
+  
+      const updateJogadores = await client.query(`UPDATE testes_praticos."Salas_Criadas" SET "Qtde_Jogadores" = 2 WHERE "Id" = '${Id}'`);
+    }
+    atualizar();
+
+  });
+
+  socket.on('aguardarJogadores', (nomeSala) =>{
+
+  
+    console.log(salasCriadas);
+    const value = salasCriadas.filter(
+      function(data){ return data.Nome == nomeSala }
+    )[0];
+    console.log(value);
+    if(value){
+      socket.join(value.Id);
+    }
+  });
+
+  socket.on('idjogadores', (sala) =>{
+    
+    console.log(sala);
+
+    socket.join(sala.Id);
+
+    var idjogadores = sala.Id
+
+    socket.to(sala.Id).emit('iniciarjogo', idjogadores); // the problem is here
+    
+    console.log(idjogadores);
+  });
+
+  socket.on('idjogadores',(sala)=>{
+    
+    var teste = sala.Id
+
+    console.log(teste);
+
+    io.emit('teste', teste);
   });
 
   socket.on("NomeDupla:", (nomedupla) => {
