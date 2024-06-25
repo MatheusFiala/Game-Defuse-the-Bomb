@@ -14,24 +14,28 @@
         font-family: "Black Ops One", system-ui;
       }
 
-      img#imagem {
-        height: 35%;
-        width: 35%;
-        margin-left: 33%;
-        cursor: pointer;
-        filter: drop-shadow(-2px -2px 20px #3dff00);
+      #imagem {
+        width: 25%;
+        margin-top: -1.5%;
       }
 
       h1 {
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-        font-size: 38px;
+        font-size: 34px;
       }
 
       #imgEscolha{
-        width: 250px;
+        width: 200px;
+        margin-top: 2%;
       }
+
+      #bomba{
+        display: flex;
+        justify-content: center;
+      }
+
     </style>
     <!-- JavaScript -->
     <!---------------------------------->
@@ -118,7 +122,10 @@
       <img src = "https://i.ibb.co/6WDccHc/Fio-Vermelho.png" id="imgEscolha">
     </h1>
     <br>
-    <img id="imagem">
+
+    <div id="bomba">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

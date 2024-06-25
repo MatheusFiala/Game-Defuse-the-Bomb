@@ -14,23 +14,25 @@
         font-family: "Black Ops One", system-ui;
       }
 
-      img#imagem {
-        height: 32%;
-        width: 32%;
-        margin-left: 34%;
-        cursor: pointer;
-        filter: drop-shadow(-2px -2px 20px #3dff00);
+      #imagem {
+        width: 25%;
       }
 
       h1 {
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-        font-size: 38px;
+        font-size: 34px;
       }
 
       #imgEscolha{
-        width: 170px;
+        width: 230px;
+      }
+
+      #bomba{
+        display: flex;
+        justify-content: center;
+        margin-top: -2%;
       }
     </style>
 
@@ -120,7 +122,10 @@
       <img src = "https://i.ibb.co/QNqnNgb/botao-Vermelho.png" id="imgEscolha" >
     </h1>
     <br>
-    <img id="imagem">
+    <div id="bomba">
+      <img id="imagem">
+    </div>
+
   </body>
   
 </html>

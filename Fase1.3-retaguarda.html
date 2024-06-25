@@ -15,10 +15,7 @@
       }
 
       img#imagem {
-        height: 30%;
-        width: 17%;
-        margin-top: 3%;
-        margin-left: 42%;
+        width: 12%;
         cursor: pointer;
         filter: drop-shadow(-2px -2px 20px #3dff00);
       }
@@ -29,6 +26,13 @@
         margin-top: 50px;
         font-size: 47px;
       }
+
+      #motorista{
+        display: flex;
+        justify-content: center;
+        margin-top: 3%;      
+      }
+
     </style>
 
     <!-- JavaScript -->
@@ -116,7 +120,9 @@
     <!---------------------------------->
     <h1> Descreva este motorista para o seu agente de campo. </h1>
     <br>
-    <img id="imagem">
+    <div id="motorista">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

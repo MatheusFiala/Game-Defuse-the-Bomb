@@ -14,25 +14,27 @@
         font-family: "Black Ops One", system-ui;
       }
 
-      img#imagem {
-        height: 32%;
-        width: 32%;
-        margin-left: 34%;
-        cursor: pointer;
-        filter: drop-shadow(-2px -2px 20px #3dff00);
-      }
-
       h1 {
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-        font-size: 38px;
+        font-size: 32px;
       }
 
       #imgEscolha{
-        width: 220px;
+        width: 180px;
         cursor: pointer;
       }
+
+      #bomba{
+        display: flex;
+        justify-content: center;
+      }
+
+      #imagem{
+        width: 25%;
+      }
+
     </style>
 
     <!-- JavaScript -->
@@ -122,7 +124,9 @@
         <img src = "https://i.ibb.co/PW4LRWg/Fio3.png" id="imgEscolha" >
     </h1>
     <br>
-    <img id="imagem">
+    <div id="bomba">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

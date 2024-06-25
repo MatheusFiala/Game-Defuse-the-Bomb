@@ -517,7 +517,7 @@ io.on('connection', (socket) => {
     }
     
     Select_Salas()
-    socket.join(nomeDaSala.id); // probraly this is not functional 
+    socket.join(nomeDaSala.id);
   });
 
 
@@ -627,7 +627,7 @@ io.on('connection', (socket) => {
 
     var idjogadores = sala.Id
 
-    socket.to(sala.Id).emit('iniciarjogo', idjogadores); // the problem is here
+    socket.to(sala.Id).emit('iniciarjogo', idjogadores);
     
     console.log(idjogadores);
   });

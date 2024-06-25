@@ -16,11 +16,10 @@
 
       img#imagem {
         height: 40%;
-        width: 40%;
-        margin-top: 7%;
-        margin-left: 31%;
+        width: 32.5%;
         cursor: pointer;
         filter: drop-shadow(-2px -2px 20px #3dff00);
+        margin-top: 5%;
       }
 
       h1 {
@@ -28,7 +27,14 @@
         color: #3dff00;
         margin-top: 50px;
         font-size: 35px;
+      }  
+
+      #bomba0{
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
       }
+
     </style>
 
     <!-- JavaScript -->
@@ -127,7 +133,9 @@
     <h1> Descreva a bomba para o seu agente de retaguarda poder te auxiliar a desarmá-la.
     </h1>
     <br>
-    <img id="imagem">
+    <div id="bomba0">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

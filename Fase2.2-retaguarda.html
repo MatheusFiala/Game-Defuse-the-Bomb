@@ -17,10 +17,9 @@
       img#imagem {
         height: 30%;
         width: 30%;
-        margin-top: 7%;
-        margin-left: 40%;
         cursor: pointer;
         filter: drop-shadow(-2px -2px 20px #3dff00);
+        margin-top: 5%;
       }
 
       h1 {
@@ -29,6 +28,13 @@
         margin-top: 50px;
         font-size: 35px;
       }
+
+      #chave {
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
+      }
+
     </style>
 
     <!-- JavaScript -->
@@ -117,7 +123,9 @@
     <h1> Seu agente de campo precisá descobrir qual a chave correta para ligar seu veículo, para ajudá-lo passe uma descrição da chave correta para ele.
     </h1>
     <br>
-    <img id="imagem">
+    <div id="chave">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

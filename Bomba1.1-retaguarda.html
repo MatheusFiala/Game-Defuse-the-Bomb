@@ -14,15 +14,6 @@
         font-family: "Black Ops One", system-ui;
       }
 
-      img#imagem {
-        height: 40%;
-        width: 40%;
-        margin-top: 1%;
-        margin-left: 30%;
-        cursor: pointer;
-        filter: drop-shadow(-2px -2px 20px #3dff00);
-      }
-
       h1 {
         text-align: center;
         color: #3dff00;
@@ -30,30 +21,19 @@
         font-size: 38px;
       }
 
-      #imgEscolha1{
-        width: 140px;
-        margin-top: 5%;
+      #numeros{
+        color: #3dff00;
+        display: flex;
+        justify-content: center;
+        font-size: 50px;
+        margin-top: -3%;
       }
-      #imgEscolha2{
-        width: 152px;
-        margin-top: 5%;
+
+      #bomba{
+        display: flex;
+        justify-content: center;
       }
-      #imgEscolha3{
-        width: 152px;
-        margin-top: 5%;
-      }
-      #imgEscolha4{
-        width: 140px;
-        margin-top: 5%;
-      }
-      #imgEscolha5{
-        height: 117px;
-        width: 140px;
-      }
-      #imgEscolha6{
-        width: 151px;
-        margin-top: 5%;
-      }
+
     </style>
 
     <!-- JavaScript -->
@@ -139,15 +119,14 @@
       <br>
        Pressione os botões nesta sequência. <br>
        <br>
-        <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" id="imgEscolha1">
-        <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" id="imgEscolha2">
-        <img src = "https://i.ibb.co/yFQ41Pq/B-2.png" id="imgEscolha3">
-        <img src = "https://i.ibb.co/Lr2xZ6P/B-1.png" id="imgEscolha4">
-        <img src = "https://i.ibb.co/ssf5t3p/B-5.png" id="imgEscolha5">
-        <img src = "https://i.ibb.co/SyW834j/B-4.png" id="imgEscolha6">
     </h1>
+    <div id="numeros">
+      <p>1 - 2 - 2 - 1 - 5 - 4</p>
+    </div>
     <br>
-    <img id="imagem">
+    <div id="bomba">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>

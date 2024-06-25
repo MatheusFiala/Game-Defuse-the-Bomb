@@ -14,28 +14,30 @@
         font-family: "Black Ops One", system-ui;
       }
 
-      img#imagem {
-        height: 32%;
-        width: 30%;
-        margin-left: 34%;
-        cursor: pointer;
-        filter: drop-shadow(-2px -2px 20px #3dff00);
-      }
-
       h1 {
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-        font-size: 38px;
+        font-size: 31px;
       }
 
       .imgEscolha{
-        width: 13%;
+        width: 7%;
       }
 
       h2 {
         text-align: center;
       }
+
+      #bomba{
+        display: flex;
+        justify-content: center;
+      }
+
+      #imagem{
+        width: 25%;
+      }
+
     </style>
 
     <!-- JavaScript -->
@@ -124,8 +126,11 @@
         <img src = "https://i.ibb.co/yWLt6rb/Bot-o-S.png" class="imgEscolha" >
         <img src = "https://i.ibb.co/P6n9D88/Bot-o-V.png" class="imgEscolha" >
     </h1>
-    <br>
-    <img id="imagem">
+    
+    <div id="bomba">
+      <img id="imagem">
+    </div>
+
   </body>
   
 </html>

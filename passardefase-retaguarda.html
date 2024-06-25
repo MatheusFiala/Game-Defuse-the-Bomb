@@ -14,19 +14,25 @@
       }
 
       img#imagem {
-        width: 35%;
-        margin-top: 4%;
-        margin-left: 34%;
+        width: 30%;
         cursor: pointer;
         filter: drop-shadow(-2px -2px 20px #3dff00);
+        margin-top: 5%; 
       }
 
       h1 {
         text-align: center;
         color: #3dff00;
         margin-top: 50px;
-        font-size: 43px;
+        font-size: 35px;
       }
+
+      #moto{
+        display: flex;
+        justify-content: center;
+        margin-top: 1%;
+      }
+
     </style>
 
     <!-- JavaScript -->
@@ -115,7 +121,9 @@
     <h1> Infelizmente o veículo do seu agente de campo estragou, 
       e agora ele precisa saber qual moto é a correta para continuar seu deslocamento até a bomba. </h1>
     <br>
-    <img id="imagem">
+    <div id="moto">
+      <img id="imagem">
+    </div>
   </body>
   
 </html>
