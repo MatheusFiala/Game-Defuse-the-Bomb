@@ -374,7 +374,7 @@ function remove_canal(canal){
 
  var escolha = 0;
 
- var tempo = 2000
+ var tempo = 3600
 
     function Regressiva(){
         if (tempo) {

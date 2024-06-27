@@ -186,15 +186,27 @@
 
   <script>
 
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+    }   
+
     var img0 = document.getElementById("imagem0");
     var img1 = document.getElementById("imagem1");
 
     img0.addEventListener("click", function() {
-      window.location.href = 'Fase1-retaguarda.html?' + (document.cookie.match('usuario').input)
+
+      const usuario = getCookie('usuario');
+      window.location.href = 'Fase1-retaguarda.html?usuario=' + usuario;
+      
     });
 
     img1.addEventListener("click", function() {
-      window.location.href = 'Fase1.html?' + (document.cookie.match('usuario').input)
+
+      const usuario = getCookie('usuario');
+      window.location.href = 'Fase1.html?usuario=' + usuario;
+
       var i = 0
       socket.emit("iniciartempo",i);
     });

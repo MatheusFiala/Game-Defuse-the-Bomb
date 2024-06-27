@@ -106,13 +106,13 @@
 
       function enviarEscolha2() {
         var escolhaUsuario;
-        escolhaUsuario = "3";
+        escolhaUsuario = "2";
         socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
       }
 
       function enviarEscolha3() {
         var escolhaUsuario;
-        escolhaUsuario = "2";
+        escolhaUsuario = "3";
         socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
       }
 

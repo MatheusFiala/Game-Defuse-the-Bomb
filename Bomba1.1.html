@@ -27,7 +27,7 @@ body {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 150px;
+        gap: 120px;
         align-content: center;
         justify-content: center;
         align-items: center;
@@ -47,12 +47,15 @@ body {
       .format :hover{
         cursor: pointer;
         filter: drop-shadow( -2px 2px 10px #3dff00);
-        transform: scale(1.1);
+        transform: scale(1.0);
         transition: 600ms;
+        color: #3dff00;
       }
 
       .format {
+        text-align: center;
         display: grid;
+        color: #dfdfdf;
       }
 
       #conteudo{
@@ -62,6 +65,7 @@ body {
       .cafe{
         height:280px;
       }
+
       </style>
 
   </head>
@@ -131,6 +135,7 @@ body {
 
      <!-- Código Html -->
      <!--------------------------------->
+
     <h1> Siga as instruções do seu agente de retaguarda para desarmar a bomba. 
     
     <div id="conteudo">
@@ -140,23 +145,38 @@ body {
     <form id="meuForm">
 
       <div class="format">
+        <label>
+          <p>Digitar está sequência</p>
           <img src = "https://i.ibb.co/MZn5vgj/sequ-ncia1.png" class="cafe" name="carros" onclick="enviarEscolha1()">
+        </label>
       </div>
 
       <div class="format">
+        <label>
+          <p>Digitar está sequência</p>
           <img src = "https://i.ibb.co/nmLnjk7/sequ-ncia2.png" class="cafe" name="carros" onclick="enviarEscolha2()">
+        </label>
       </div>
 
       <div class="format">
+        <label>
+          <p>Digitar está sequência</p>
           <img src = "https://i.ibb.co/2qkygVH/sequ-ncia3.png" class="cafe" name="carros" onclick="enviarEscolha3()">
+        </label>
       </div>
 
       <div class="format">
+        <label>
+          <p>Digitar está sequência</p>
           <img src = "https://i.ibb.co/HG3Whfq/sequ-ncia4.png" class="cafe" name="carros" onclick="enviarEscolha4()">
+        </label>
       </div>
       
       <div class="format">
+        <label>
+          <p>Digitar está sequência</p>
           <img src = "https://i.ibb.co/41C8XkK/sequ-ncia5.png" class="cafe" name="carros" onclick="enviarEscolha5()">
+        </label>
       </div>
 
     </form>
