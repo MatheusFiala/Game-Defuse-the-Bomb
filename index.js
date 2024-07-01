@@ -455,7 +455,7 @@ io.on('connection', (socket) => {
 
     var pão = setInterval(() => {
       
-      socket.broadcast.emit('imagens', (carros))
+      socket.broadcast.emit('imagens', (carros))  // caso todas as telas de retaguarda estejam trocando de carro, esse é o problema
       clearInterval(pão);
       
     }, 7000);
@@ -473,8 +473,11 @@ io.on('connection', (socket) => {
 
     io.emit('escolhaNum',escolhaNum);
 
-    canal = ler_canal(escolhaUser['usuario'])
+    canal = ler_canal(escolhaUser['usuario']) // no front pegar o valor do cookie e substituir
 
+    console.log(escolhaUser);
+    console.log(canal);
+    
     if(escolhaNum == canal['escolha'] ){
       io.to(escolhaUser['usuario']).emit('vitoria', true);
     }
@@ -517,6 +520,8 @@ io.on('connection', (socket) => {
     }
     
     Select_Salas()
+    console.log(nomeDaSala);
+    criar_canal(nomeDaSala.nome)
     socket.join(nomeDaSala.id);
   });
 
@@ -619,26 +624,33 @@ io.on('connection', (socket) => {
     }
   });
 
-  socket.on('idjogadores', (sala) =>{
+  // socket.on('idjogadores', (sala) =>{
     
-    console.log(sala);
+  //   console.log(sala);
 
-    socket.join(sala.Id);
+  //   socket.join(sala.Id);
 
-    var idjogadores = sala.Id
+  //   var idjogadores = sala.Id
 
-    socket.to(sala.Id).emit('iniciarjogo', idjogadores);
+  //   socket.to(sala.Id).emit('iniciarjogo', idjogadores);
     
-    console.log(idjogadores);
-  });
+  //   console.log(idjogadores);
+  // });
 
   socket.on('idjogadores',(sala)=>{
-    
-    var teste = sala.Id
 
-    console.log(teste);
+    var emissaoid = setInterval(() => {
+      
+      var teste = sala.Id
 
-    io.emit('teste', teste);
+      console.log(teste);
+
+      io.emit('teste', teste);
+
+      clearInterval(emissaoid);
+      
+    }, 5000);
+
   });
 
   socket.on("NomeDupla:", (nomedupla) => {

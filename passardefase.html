@@ -89,7 +89,7 @@
 
       function enviarEscolha2() {
         var escolhaUsuario;
-        escolhaUsuario = "2";
+        escolhaUsuario = "2"; 
         socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
       }
 

@@ -151,7 +151,7 @@
       function enviarEscolha(id_carro) {
         var escolhaUsuario = carros[id_carro];
 
-        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'});
+        socket.emit("escolhaUsuario", {'valorEscolhido':escolhaUsuario,"usuario":getCookie('usuario'), 'agente':'campo'}); 
       };
 
     </script>
