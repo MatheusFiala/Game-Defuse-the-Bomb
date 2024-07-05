@@ -331,6 +331,9 @@ app.get('/canais.json', (req, res) => {
   res.sendFile(__dirname + '/canais.json');
 });
 
+app.get('/voceganhou2.html', (req, res) => {
+  res.sendFile(__dirname + '/voceganhou2.html');
+});
 
 const usuários = {};
 const canais = {}
@@ -624,19 +627,6 @@ io.on('connection', (socket) => {
     }
   });
 
-  // socket.on('idjogadores', (sala) =>{
-    
-  //   console.log(sala);
-
-  //   socket.join(sala.Id);
-
-  //   var idjogadores = sala.Id
-
-  //   socket.to(sala.Id).emit('iniciarjogo', idjogadores);
-    
-  //   console.log(idjogadores);
-  // });
-
   socket.on('idjogadores',(sala)=>{
 
     var emissaoid = setInterval(() => {
@@ -649,7 +639,7 @@ io.on('connection', (socket) => {
 
       clearInterval(emissaoid);
       
-    }, 5000);
+    }, 2000);
 
   });
 

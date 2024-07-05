@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head> 
+
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <title> Parabéns </title>
+
+    </head>
+
+    <!------------------------------------------------------->
+    <!-- CSS da Página -->
+
+    <style>
+    *{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Black Ops One", system-ui;
+    }
+    body{
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 120px;
+      overflow: hidden;
+      background-color: black;
+      background-image: url("https://img1.picmix.com/output/stamp/normal/5/3/3/4/1034335_985ee.gif");
+    }
+
+    #titulo-jogo{
+      font-size: 70px;
+      font-family: "Black Ops One", system-ui;
+      text-align: center;
+      color: #3dff00;
+    }
+
+    .animacaoCair{
+      animation:cair 2.5s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%)
+    }
+
+    @keyframes cair {
+      from { margin-top: -100%; }
+      to   { margin-top: -80%; }
+      to   { margin-top: -50%; }
+      to   { margin-top: -20%; }
+      to   { margin-top: 0%; }
+    }
+
+    #conteudo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #3dff00;
+    font-size: 35px;
+    margin-top: -4%;
+    }
+
+    #botao{
+    width: 210px;
+    padding-block: 10px;
+    font-size: 22px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 600ms;
+    font-family: "Black Ops One", system-ui;
+    background-color: #3dff00;
+    color: black;
+    }
+
+    #botao:hover{
+      transform: scale(1.2);
+      border-width: 6px;
+    }
+
+    #nomeR{
+      width: 25%;
+      height: 35px;
+    }
+
+    </style>
+
+    <!------------------------------------------------------->
+    <!-- HTML -->
+
+    <h1 id="titulo-jogo"> VOCÊ SALVOU O DIA ! </h1>
+
+    <div id="conteudo">
+        <button id="botao" onclick="enviarnome()">Voltar ao menu principal</button> 
+    </div>
+
+</body>
+
+<script src="/socket.io/socket.io.js"> </script>
+<script> const socket = io(); </script>
+
+<script>
+
+    function enviarnome() {
+        window.location.href = '/'
+    }
+
+    function animacao() {
+      $('#titulo-jogo').addClass('animacaoCair'); 
+    }
+
+    window.onload = function () {
+      animacao();
+    };
+
+</script>
+
+</html>

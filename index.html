@@ -486,7 +486,7 @@
     console.log('enviando ',value);
     socket.emit('idjogadores', value)
 
-    window.location.href = '/loading.html?'; // redirecionar para a tela de loading
+    window.location.href = '/loading.html?'; 
   }
 
   ExibirSalas()
@@ -507,31 +507,11 @@
       ],
       "autoWidth": false,
       "columnDefs": [
-        { "width": "2%", "targets": 0 },
-        { "width": "13%", "targets": 1 },
-        { "width": "2%", "targets": 2 },
-        { "width": "2%", "targets": 3 },
         {"className": "dt-center", "target": 0 },
         {"className": "dt-center", "target": 2 },
         {"className": "dt-center", "target": 3 },
         {"className": "dt-center", "target": 4 },
         {"className": "dt-head-center", "targets": [ 0 , 2 , 3, 4] },
-
-        // {
-        //     targets: 0,
-        //     data: function (row, type, val, meta) {
-        //         if (row == jogadores == 1) {
-        //           // botao1 com função para entrar na sala
-        //           // criar variavel para o numero de jogadores na sala e de alguma forma indentificar
-        //           // o numero de jogadores na sala [feito]
-        //           // condição do if baseada na variavel jogadores, se for 1 aparece o botão um,
-        //           // se for 2 aparece o botão 2.
-        //         }
-        //         else if (row == jogadores == 2) {
-        //             // botao2 apagado sem função
-        //         }
-        //     }
-        // }
       ],
       "destroy": true,
       "data": dados_salas,
@@ -593,11 +573,12 @@
       "aLengthMenu": [
         [], []
       ],
+      "order": [[ 1, "desc" ]],
       "columnDefs": [
         {"className": "dt-center", "target": 0 },
         {"className": "dt-center", "target": 1 },
         {"className": "dt-center", "target": 2 },
-        {"className": "dt-head-center", "targets": [ 0, 1 , 2 ] }
+        {"className": "dt-head-center", "targets": [ 0, 1 , 2 ] },
       ],
       "destroy": true,
       "data": dados_Recordes,
