@@ -60,7 +60,7 @@
     const socket = io();
 
     socket.on("connect", () => {
-        console.log(socket); // x8WIv7-mJelg7on_ALbx
+        console.log(socket);
 
         socket.emit('aguardarJogadores',usuario)
         
@@ -70,7 +70,7 @@
 
         console.log(teste);
 
-        document.cookie = 'usuario='+teste+'; path=/'   // criando cookie apenas para quem passa por esta tela
+        document.cookie = 'usuario='+teste+'; path=/'
 
         window.location.href = `/telainicial.html?usuario=${teste}`
 

@@ -444,7 +444,6 @@
     const params = new URLSearchParams(window.location.search);
     const usuario = params.get('usuario');
 
-    // socket.emit('criarSala', usuario);
 
     function criarSala() {
 
@@ -463,11 +462,7 @@
           nome: usuarioEscolhido
         });
 
-
-      // document.cookie = 'usuario='+usuarioEscolhido+'; path=/'
       window.location.href = '/loading.html?' 
-      // usuario=${usuarioEscolhido};
-      
         
     }
 
@@ -505,6 +500,7 @@
       "aLengthMenu": [
         [], []
       ],
+      "order": [[ 0, "desc" ]],
       "autoWidth": false,
       "columnDefs": [
         {"className": "dt-center", "target": 0 },

@@ -551,26 +551,33 @@ io.on('connection', (socket) => {
     Select();
   });
 
+  let globalConnection = null;
+
+  async function connect() {
+    if (globalConnection && globalConnection.totalCount > 0) {
+      return globalConnection;
+    }
+  
+    const { Pool } = require('pg');
+    const pool = new Pool({
+      connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
+    });
+  
+    console.log("Criou pool de conexões no PostgreSQL!");
+  
+    globalConnection = pool;
+    return pool;
+  }
+  
   socket.on('nome', (usuarioEscolhido) => {
     var nomes = usuarioEscolhido;
-    console.log(usuarioEscolhido);
-    // conexão com banco de dados
-    
-    async function connect() {
-      if (global.connection)
-            return global.connection.connect();
-     
-        const { Pool } = require('pg');
-        const pool = new Pool({
-            connectionString: 'postgres://usr_dev:usr_dev@172.32.1.23:5432/dev'
-        });
-     
-        const client = await pool.connect();
-        console.log("Criou pool de conexões no PostgreSQL!");
-    
-        client.release();
-
-        // Inicio data atual
+    console.log('pãoooooooooooooooooooooooooooo');
+  
+    async function executeQuery() {
+      const pool = await connect();
+      const client = await pool.connect();
+      try {
+        // Your query execution code here
         const currentDate = new Date();
         const day = String(currentDate.getDate()).padStart(2, '0');
         const month = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -580,19 +587,17 @@ io.on('connection', (socket) => {
         const seconds = String(currentDate.getSeconds()).padStart(2, '0');
         
         const formattedDate = `${day}/${month}/${year} | ${hours}:${minutes}:${seconds}`;
-        // Fim data atual
-
+        
         var jogadores = 1
-
-        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes ,jogadores, formattedDate]);
+  
+        const insert = await client.query('INSERT INTO testes_praticos."Salas_Criadas" VALUES($1,$2,$3)', [nomes,jogadores, formattedDate]);
         console.log('Adicionado com sucesso');
-    
-        // client.release();
-    
-        global.connection = pool;
-        // return pool.connect();
+      } finally {
+        client.release();
+      }
     }
-    connect();
+  
+    executeQuery();
   });
 
   socket.on('atualizar', (Id) => {

@@ -82,6 +82,18 @@
 
     </style>
 
+    <script>
+
+      function animacao() {
+      $('#titulo-jogo').addClass('animacaoCair'); 
+    }
+
+    window.onload = function () {
+      animacao();
+    };
+    
+    </script>
+
     <!------------------------------------------------------->
     <!-- HTML -->
 
@@ -107,14 +119,6 @@
         socket.emit("NomeDupla:", nomedupla)
         window.location.href = '/'
     }
-
-    function animacao() {
-      $('#titulo-jogo').addClass('animacaoCair'); 
-    }
-
-    window.onload = function () {
-      animacao();
-    };
 
 </script>
 
