@@ -17,6 +17,11 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/img/:imageName', (req, res) => {
+  console.log(req.params);
+  console.log(__dirname);
+  res.sendFile(__dirname + '/assets/'+req.params.imageName);
+});
 
 app.get('/Fase1.html', (req, res) => {
   res.sendFile(__dirname + '/Fase1.html');

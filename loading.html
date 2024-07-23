@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title> Carregando </title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <style>
         body{
             background-color: black;
+            font-family: "Black Ops One", system-ui;
         }
+
         p{
             color: #3dff00;
             font-size: 30px;
         }
+
         .loader {
       width: 200px;
       padding: 8px;
@@ -32,15 +37,40 @@
     @keyframes l3 {to{transform: rotate(1turn)}}
 
     #carregando{
-        margin-top: 20%;
+        margin-top: 13%;
         display: flex;
         align-items: center;
         flex-direction: column;
     }
+
+    #botao{
+        background-color: #3dff00;
+        border-radius: 10px;
+        height: 50px;
+        width: 130px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 600ms;
+        font-family: "Black Ops One", system-ui;
+    }
+
+    #botao:hover{
+        background-color: #ffffff;
+        transform: scale(1.1);
+      }
     
+    #divbotao{
+        display: flex;
+        justify-content: center
+    }
+
     </style>
 
    <div id="carregando">  <div class="loader"></div> <p> AGUARDANDO JOGADOR ... </p> </div>
+
+    <div id="divbotao">
+        <button id="botao" onclick="menu()">CANCELAR</button>
+    </div>
     
 </body>
 
@@ -83,6 +113,12 @@
         window.location.href = `/telainicial.html?usuario=${idjogadores}`
 
     });
+
+    function menu() {
+
+        window.location.href = '/'
+    }
+
 </script>
 
 </html>
