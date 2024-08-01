@@ -58,10 +58,26 @@
     <!------------------------------------------------------->
     <!-- HTML -->
 
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      const socket = io();
+    </script>
+
+    <script>
+      
+      function perdeu() {
+        var stoptime = 0
+        socket.emit('stoptime', stoptime)
+        window.location.href = '/'
+      }
+
+    </script>
+
     <h1> Você Perdeu !</h1>
 
      <div id="conteudo"> 
-        <button onclick="window.location.href = '/'"> Recomeçar </button> 
+        <button onclick="perdeu()"> Recomeçar </button> 
     </div>
 
 </body>

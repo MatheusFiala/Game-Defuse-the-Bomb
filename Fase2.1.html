@@ -10,7 +10,7 @@
     <!---------------------------------->
     <style>
 
-body {
+      body {
         background-color: #000000;
         font-family: "Black Ops One", system-ui;
       }
@@ -23,14 +23,16 @@ body {
       }
       
       div {
+        margin: auto;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 32px;
         align-content: center;
         justify-content: center;
         align-items: center;
-        height: 500px;
+        width: 90%;
+        margin-top: -3%;
       }
   
       .imagens {
@@ -46,14 +48,19 @@ body {
       
 
       #meuForm img {
-        width: 300px;
+        width: 340px;
       }
 
       #meuForm img:hover{
         cursor: pointer;
-        filter: drop-shadow( -2px 2px 10px #3dff00);
+        filter: drop-shadow(-0.5px -0.5px 3px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
+      }
+
+      #meuFormjr{
+        display: flex;
+        justify-content: center;
       }
       
       </style>
@@ -129,6 +136,7 @@ body {
       para despistá-los.      
     </h1>
     <br>
+    <div id="meuFormjr"> 
     <div id="meuForm">
 
         <img src="http://172.32.0.224:5000/img/Carro1.png" class="café" name="carros" onclick="escolhaUsuario1()">
@@ -142,6 +150,7 @@ body {
         <img src="http://172.32.0.224:5000/img/Carro5.png" class="café" name="carros" onclick="escolhaUsuario5()">
 
     </div>
+  </div>
 
   </body>
 

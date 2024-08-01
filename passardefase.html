@@ -18,7 +18,7 @@
       h1 {
         text-align: center;
         color: #3dff00;
-        margin-top: 50px;
+        margin-top: 30px;
       	font-size: 35px;
       }
       
@@ -31,7 +31,8 @@
         align-content: center;
         justify-content: center;
         align-items: center;
-        margin-top: 8%;
+        margin-top: -3%;
+        width: 90%;
       }
   
       .imagens {
@@ -46,18 +47,22 @@
       }
       
       #meuForm img {
-        width: 240px;
+        width: 304px;
       }
 
       #meuForm img:hover{
         cursor: pointer;
-        filter: drop-shadow( -2px 2px 10px #3dff00);
+        filter: drop-shadow(-0.5px -0.5px 3px #3dff00);
         transform: scale(1.1);
         transition: 600ms;
       }
 
       #conteudo{
         margin-top: 5%;
+      }
+
+      #moto{
+        width: 18% !important;
       }
       
       </style>
@@ -143,7 +148,7 @@
         
         <img src="http://172.32.0.224:5000/img/moto4.png" onclick="enviarEscolha4()">
        
-        <img src="http://172.32.0.224:5000/img/moto5.png" onclick="enviarEscolha5()">
+        <img id="moto" src="http://172.32.0.224:5000/img/moto5.png" onclick="enviarEscolha5()">
 
     </form>
 

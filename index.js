@@ -387,11 +387,23 @@ function remove_canal(canal){
     function Regressiva(){
         if (tempo) {
             tempo --
+            console.log(tempo);
 
             if (tempo == 0) {
                 clearInterval(tempo)
             }
         }
+    }
+
+    var relogio = 0
+
+    function teste() {
+      relogio = setInterval(Regressiva, 1000); 
+    }
+
+    function teste2() {
+      clearInterval(relogio);
+      tempo = 3600
     }
 
   // Setup da parte de Sockets
@@ -497,9 +509,14 @@ io.on('connection', (socket) => {
   });
 
   socket.on("iniciartempo",(i) =>{
-    var relogio = setInterval(Regressiva, 1000);
+    teste()
   });
 
+  socket.on("stoptime",(stoptime) =>{
+    console.log('pãooooooooooooooooooooooooooo');
+    teste2()
+  });
+  
   socket.on('valorEscolhido', (valorEscolhido) => {
     socket.join(valorEscolhido['usuario']);
 
